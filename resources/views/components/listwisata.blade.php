@@ -11,12 +11,12 @@ if (!$user) {
 }
 ?>
 
-
 <?php
 function formatCurrency($value) {
   // Format the value as a currency with thousands separators
   return number_format($value, 0, ',', '.');
 }?>
+
 
 
 <html lang="en">
@@ -34,14 +34,14 @@ function formatCurrency($value) {
         @foreach ($results as $result)
 <div class="searchItem">
       <img
-        src="{{ asset('uploads/img/' . $result->img_paketwisata) }}"
+        src="{{ asset('uploads/img/' . $result->img_wisata) }}"
         alt=""
         class="siImg"
       />
       <div class="siDesc">
-        <h1 class="siTitle">{{$result->paket_wisata}}</h1>
+        <h1 class="siTitle">{{$result->name}}</h1>
         <span class="siDistance">{{$result->kota}}</span>
-        <span class="siTaxiOp">{{$result->kategori}}</span>
+        <span class="siTaxiOp">{{$result->description}}</span>
         <!-- <span class="siSubtitle">
           Studio Apartment with Air conditioning
         </span> -->
@@ -54,14 +54,14 @@ function formatCurrency($value) {
         </span> -->
       </div>
       <div class="siDetails">
-      @if(auth()->user() && auth()->user()->isAdmin)
+         @if(auth()->user() && auth()->user()->isAdmin)
         <div class="edit-wisata-item">
-          <a href="{{ route('create-wisata') }}" style="text-decoration: none; color: black;">
+          <a href="{{ route('buat-wisatabaru') }}" style="text-decoration: none; color: black;">
           <div class="items-configuration">
             <small>Create</small>
           </div>
           </a>
-          <a href="{{ route('edit-paket-wisata', ['id' => $result->id]) }}" style="text-decoration: none; color: black;">
+          <a href="{{ route('edit.destinasi', ['id' => $result->id]) }}" style="text-decoration: none; color: black;">
           <div class="items-configuration">
             <small>Edit</small>
           </div>
@@ -76,10 +76,10 @@ function formatCurrency($value) {
           <button>{{ $result->ratings }}</button>
         </div>
         <div class="siDetailTexts">
-          <span class="siDistance">Mulai dari 1 hari</span>
-          <span class="siPrice">Rp.{{ formatCurrency($result->budget) }}/<small>pax</small></span>
+        <span class="siDistance">Mulai dari 1 hari</span>
+          <span class="siPrice">Rp.{{ formatCurrency($result->price) }}/<small>pax</small></span>
           <!-- <span class="siTaxOp">Includes taxes and fees</span> -->
-          <a href="{{ route('detail', ['id' => $result->id]) }}" style="text-decoration: none; color: white;">
+          <a href="{{ route('wisata-detail', ['id' => $result->id]) }}" style="text-decoration: none; color: white;">
           <button class="siCheckButton">Detail</button>
           </a>
         </div>

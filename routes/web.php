@@ -1,11 +1,17 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+
 use App\Http\Controllers\GoogleController;
-use App\Http\Controllers\RegisterController;
-use App\Http\Controllers\LogoutController;
-use App\Http\Controllers\LoginController;
-use App\Http\Controllers\FilterWisataController;
+
+use App\Http\Controllers\AuthController;
+
+use App\Http\Controllers\PaketWisataController;
+
+use App\Http\Controllers\WisataController;
+
+use App\Http\Controllers\PaymentController;
+
 use App\Http\Middleware\Auths;
 
 /*
@@ -28,16 +34,27 @@ Route::get("/login", function () {
 
 
 //LOGOUT
-Route::post('/login', [LogoutController::class, 'destroy'])->name('logouts');
+Route::post('/login', [AuthController::class, 'destroy'])->name('logouts');
 
+
+
+//RESET PASSWORD
+Route::middleware('guest')->group(function () {
+Route::get('/forgotpassword', [AuthController::class, 'indexOfResetPassword'])->name('res-password');
+Route::post('/forgotpassword/reset', [AuthController::class, 'resetPasswordHandler'])->name('password.email');
+Route::get('/reset-password/{token}', [AuthController::class, 'createNewPassword'])->name('password.reset');
+Route::post('/reset-password', [AuthController::class, 'store'])->name('password.update');
+});
 
 //LOGIN
-Route::get('/login', [LoginController::class, 'index']);
-Route::post('/login/proses', [LoginController::class, 'login']);
+Route::get('/login', [AuthController::class, 'indexOfLogin'])->name('login');
+Route::post('/login/proses', [AuthController::class, 'login']);
+
 
 //REGISTER
-Route::get('/register', [RegisterController::class, 'index']);
-Route::post('/register/proses', [RegisterController::class, 'register']);
+Route::get('/register', [AuthController::class, 'indexOfRegister'])->name('register');
+Route::post('/register/proses', [AuthController::class, 'register']);
+
 
 //GOOGLE SIGN IN ROUTES
 Route::controller(GoogleController::class)->group(function() {
@@ -45,7 +62,49 @@ Route::controller(GoogleController::class)->group(function() {
     Route::get('auth/google/callback', 'handleGoogleCallback');
 });
 
+
 //PAKET WISATA
-Route::get("/filterwisata", [FilterWisataController::class, 'index'])->name('filterwisata');
-Route::get("/paketwisata", [FilterWisataController::class, 'hasilwisata'])->name('wisataresult');
-Route::post('/mencaripaketwisata', [FilterWisataController::class, 'getpaketwisatabyfilter'])->name('kirim_paket_wisata'); 
+Route::get("/trip", [PaketWisataController::class, 'indexOfTrip'])->name('buat-trip');
+Route::post('/paketwisata', [PaketWisataController::class, 'getPaketWisataFilterPertama'])->name('pencarian-paketwisata'); 
+Route::post('/paketwisata/filter', [PaketWisataController::class, 'getPaketWisataFilterKedua'])->name('pencarian-paketwisata-filter'); 
+Route::get('/paketwisata/detail/{id}', [PaketWisataController::class, 'getById'])->name('detail');
+Route::get('/paketwisata/itenary/{id}', [PaketWisataController::class, 'getAllItenarys'])->name('itenary');
+Route::get('/paketwisata/itenary/details/{id}', [PaketWisataController::class, 'getItenarysById'])->name('indexofwisata');
+//CRUD SIDE || UPDATE
+Route::get('/paketwisata/edit/{id}', [PaketWisataController::class, 'indexOfEditPaketWisata'])->name('edit-paket-wisata');
+Route::put('/paketwisata/edit/{id}/update', [PaketWisataController::class, 'update']);
+Route::put('/paketwisata/edit/{id}/updateimage', [PaketWisataController::class, 'updateImage'])->name('update.img.pktwisata');
+//CRUD SIDE || CREATE
+Route::get('/paketwisata/buat', [PaketWisataController::class, 'createIndex'])->name('create-wisata');
+Route::post('/paketwisata/buat/berhasil', [PaketWisataController::class, 'create'])->name('paketwisata.create');
+
+
+
+//XENDIT
+Route::get('/payment/success/invoice_id', [PaymentController::class, 'index'])->name('payment.success');
+Route::post('/payment/create', [PaymentController::class, 'create'])->name('xendit');
+
+
+
+
+//DESTINASI
+Route::get('/destinasi', [WisataController::class, 'index'])->name('destinasi');
+Route::post('/destinasi/filter', [WisataController::class, 'getwisatabyfilter'])->name('destinasi-filter');
+Route::get('/destinasi/{id}', [WisataController::class, 'getwisatabyid'])->name('wisata-detail');
+
+//DESTINASI CRUD SIDE
+
+// CREATE
+Route::get('/buat/destinasi', [WisataController::class, 'indexOfCreateWisata'])->name('buat-wisatabaru');
+Route::post('/destinasi/buat/berhasil', [WisataController::class, 'createWisataHandler'])->name('wisata.create');
+
+// UPDATE
+Route::get('/destinasi/edit/{id}', [WisataController::class, 'indexOfEditWisata'])->name('edit.destinasi');
+Route::put('/destinasi/edit/{id}/update', [WisataController::class, 'editWisataHandler']);
+Route::put('/destinasi/edit/{id}/update/image', [WisataController::class, 'updateImageWisataHandler']);
+Route::put('/destinasi/edit/{id}/update/paketwisataid', [WisataController::class, 'updatePaketWisataId'])->name('updatePaketWisataId');
+
+
+
+
+

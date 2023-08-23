@@ -16,7 +16,9 @@
                         <h1 class="mulai-sekarang">Mulai Sekarang !</br>GRATIS.</h1>
                     </div>
                     <div class="item-uf">
-                        <button class="buat-trip"><a href="{{ route('filterwisata') }}" style="text-decoration: none; color: white;">Buat Trip</a></button>
+                    <a href="{{ route('buat-trip') }}" style="text-decoration: none; color: white;">
+                        <button class="buat-trip">Buat Trip</button>
+                    </a>
                     </div>
             </div>
         </div>

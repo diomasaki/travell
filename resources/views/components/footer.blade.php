@@ -22,16 +22,16 @@
             <div class="box">
                 <div class="footerItem">
                     <p class="info-footer-heading">LAYANAN</p>
-                    <p class="info-footer-item">Saran Destinasi</p>
+                    <a href="{{ route('destinasi') }}" style="text-decoration: none; color: black;"><p class="info-footer-item">Destinasi</p></a>
                     <p class="info-footer-item">Hubungi Kami</p>
                 </div>  
             </div>
             <div class="box">
                 <div class="footerItem">
-                <p class="info-footer-heading">DUKUNGAN</p>
-                    <p class="info-footer-item">Tentang Youridealescape.com</p>
-                    <p class="info-footer-item">Ketentuan</p>
-                    <p class="info-footer-item">Kebijakan Privasi</p>
+                <p class="info-footer-heading">Halaman</p>
+                <a href="{{ route('home') }}" style="text-decoration: none; color: black;"><p class="info-footer-item">Beranda</p></a>
+                <a href="{{ route('destinasi') }}" style="text-decoration: none; color: black;"><p class="info-footer-item">Tempat Wisata</p></a>
+                <a href="{{ route('buat-trip') }}" style="text-decoration: none; color: black;"><p class="info-footer-item">Paket Wisata</p></a>
                 </div>  
             </div>
             <div class="box">

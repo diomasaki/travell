@@ -16,9 +16,13 @@ class PaketWisataTable extends Migration
         Schema::create('paketwisata', function (Blueprint $table) {
         $table->id();
         $table->string('paket_wisata');
-        $table->string('budget');
+        $table->integer('budget');
         $table->string('kota');
         $table->string('kategori');
+        $table->text('img_paketwisata');
+        $table->text('keterangan');
+        $table->string('ratings');
+        $table->text('itinerary');
         $table->timestamps(); 
         });
     }

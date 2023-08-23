@@ -54,6 +54,7 @@ if ($user) {
                     </form>
                 </div>
                 <div class="login-google-container">
+                    <a href="{{ route('login') }}" style="text-decoration: none; color: white;"><p style="color: gray; cursor: pointer;">Sudah punya akun?</p></a>
                     <a href="{{ route('auth.google') }}"  style="text-decoration: none; color: black; width: 100%; display: flex; align-items: center;  margin-top: 10px;
                         justify-content: center;
                         text-decoration: none;

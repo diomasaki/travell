@@ -16,42 +16,43 @@
     <div class="form-filter-wisata">
         <h2 class="form-filter-title">Tentukan Opsi Liburan Sesuai Keinginanmu</h2>
         <div class="filters">
+        <form action="{{ route('pencarian-paketwisata') }}" method="POST" class="filters">
+            @csrf
             <div class="filter-items">
-                <i class="fa fa-building-o" aria-hidden="true"></i>
+                <i class="fa fa-clock-o" aria-hidden="true"></i>
                 <p class="filter-text">Durasi Liburan</p>
                 <div class="hari-filter">
-                    <input class="hari" name="hari" type="text">Hari
+                    <input class="hari" name="durasi" type="text">Hari
                 </div>
             </div>
             <div class="filter-items">
                 <i class="fa fa-building-o" aria-hidden="true"></i>
                 <p class="filter-text">Kabupaten/Kota</p>
                 <select name="kota" id="kota" class="kabupaten">
-                    <option disabled>Pilih</option>
-                    <option id="kota" name="kota" value="Denpasar">Denpasar</option>
-                    <option id="kota" name="kota" value="Jakarta">Jakarta</option>
+                    <option disabled selected>Pilih</option>
+                @foreach ($kotaOptions as $kotaOption)
+                    <option value="{{ $kotaOption }}">{{ $kotaOption }}</option>
+                @endforeach
                 </select>
             </div>
             <div class="filter-items">
-                <i class="fa fa-building-o" aria-hidden="true"></i>
+                <i class="fa fa-users" aria-hidden="true"></i>
                 <p class="filter-text">Jumlah Orang</p>
                 <div class="hari-filter">
-                    <input class="hari" name="orang" default="1" type="text">Orang
+                    <input class="hari" name="jumlah_orang" default="1" type="text">Orang
                 </div>
             </div>
             <div class="filter-items">
-                <i class="fa fa-building-o" aria-hidden="true"></i>
-                <p class="filter-text">Estimasi Budget</p>
+                <i class="fa fa-money" aria-hidden="true"></i>
+                <p class="filter-text">Estimasi Budget /<small> per orang</small></p>
                 <div class="hari-filter">
                     <div class="rp">
                         Rp
                     </div>
-                    <input class="haris" name="budget" default="100.000" type="text">
+                    <input class="haris" name="budget" type="number">
                 </div>
             </div>
             <div class="filter-items-wisata-kategori">
-                <form action="{{ route('kirim_paket_wisata') }}" method="POST">
-                    @csrf
                 <p class="filter-text">Pilih Kategori Wisata</p>
                     <div class="input-kategori-wisata">
                         <input type="radio" name="kategori" id="kategori-budaya"  value="Budaya" class="wisata-li">
@@ -72,9 +73,9 @@
                     <div class="tttt">
                         <button type="submit" name="submit" class="lihat-hasil">Lihat Hasil</button>
                     </div>
-                </form>
             </div>
-        </div>
+        </form>
+    </div>
     </div>
 </div>
 </div>

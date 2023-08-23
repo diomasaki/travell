@@ -14,7 +14,7 @@
                 <div class="info-container-slider">
                     <h1 class="title-slider">Visit Bromo With Us.</h1>
                     <p class="desc-slider">youridealescape</p>
-                    <button class="slider">click</button>
+                    <a href="{{ route('destinasi') }}" style="text-decoration: none; color: white;"><button class="slider">Mulai Petualangan Anda!</button></a>
                 </div>
                 <div class="img-container-slider">
                     <img src="https://wallpapercave.com/wp/wp6665318.jpg" alt="" class="slider-banner">

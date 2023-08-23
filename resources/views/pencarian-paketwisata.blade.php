@@ -24,54 +24,58 @@ if (!$user) {
     <title>Paket Wisata</title>
 </head>
 <body>
+  @auth
+  @include('components.navbar')
     <div class="listbr">
-@auth
-    @include('components.navbar')
       <div class="listContainer">
         <div class="listWrapper">
           <div class="listSearch">
             <h1 class="lsTitle">Pencarian</h1>
+          <form action="{{ route('pencarian-paketwisata-filter') }}" method="POST" class="pencarian-paketwisata-filter">
+            @csrf
             <div class="lsItem">
               <label>Durasi Liburan</label>
-              <input placeholder="Durasi" type="text" />
+              <input placeholder="Durasi" type="text" name="durasi" />
             </div>
             <div class="lsItem">
               <label>Kabupaten/Kota</label>
-              <input placeholder="Kota" type="text" />
+              <select name="kota" id="kota" class="kabupaten">
+                    <option disabled selected>Pilih</option>
+                @foreach ($kotaOptions as $kotaOption)
+                    <option value="{{ $kotaOption }}">{{ $kotaOption }}</option>
+                @endforeach
+                </select>
             </div>
             <div class="lsItem">
               <label>Jumlah Orang</label>
-              <input placeholder="Jumlah Orang" type="text" />
+              <input placeholder="Jumlah Orang" type="text" name="jumlah_orang"/>
             </div>
             <div class="lsItem">
-              <label>Estimasi Budget</label>
-              <input placeholder="Budget" type="text" />
-            </div>
-            <div class="lsItem">
-              <label>Tanggal Check-in</label>
-              <input placeholder="Destinasi" type="text">
+              <label>Estimasi Budget /<small> per orang</small></label>
+              <input placeholder="Budget" type="number" name="estimasibudget"/>
             </div>
             <div class="lsItem">
               <label>Kategori</label>
               <div class="lsOptions">
                 <div class="lsOptionItem">
-                  <span id="budaya" class="lsOptionText">
+                  <span for="budaya" class="lsOptionText">
                      Budaya
                   </span>
-                  <input for="budaya" type="radio" class="lsOptionInput" />
+                  <input id="budaya" type="radio" class="lsOptionInput" name="kategori" value="Budaya" />
                 </div>
                 <div class="lsOptionItem">
                   <span id="pantai" class="lsOptionText">
                     Pantai
                   </span>
-                  <input for="pantai" type="radio" class="lsOptionInput" />
+                  <input for="pantai" type="radio" class="lsOptionInput" name="kategori" value="Pantai"/>
                 </div>
                 <div class="lsOptionItem">
                   <span id="religi" class="lsOptionText">Religi</span>
                   <input
                     for="religi"
                     type="radio"
-                    min={1}
+                    name="kategori"
+                    value="Religi"
                     class="lsOptionInput"
                     placeholder="Dewasa"
                   />
@@ -81,7 +85,8 @@ if (!$user) {
                   <input
                     for="alam"
                     type="radio"
-                    min={0}
+                    value="Alam"
+                    name="kategori"
                     class="lsOptionInput"
                     placeholder="Anak Kecil"
                   />
@@ -90,8 +95,9 @@ if (!$user) {
                   <span id="minat" class="lsOptionText">Minat Khusus</span>
                   <input
                     for="minat"
+                    name="kategori"
                     type="radio"
-                    min={1}
+                    value="Minat"
                     class="lsOptionInput"
                     placeholder="Kamar"
                   />
@@ -99,6 +105,7 @@ if (!$user) {
               </div>
             </div>
             <button>Search</button>
+          </form>
           </div>
           <div class="listResult">
             @include('components/listpaketwisata')
@@ -106,7 +113,8 @@ if (!$user) {
         </div>
       </div>
     </div>
+  </div>
+  @include('components.footer')
 @endauth
-    </div>
 </body>
 </html>

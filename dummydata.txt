@@ -1,0 +1,82 @@
+'name' => 'Gunung Bromo',
+            'description' => 'Yogyakarta, atau lebih dikenal dengan sebutan "Jogja," adalah sebuah kota istimewa dan provinsi di Indonesia yang memiliki daya tarik budaya, sejarah, dan alam yang kaya. Terletak di bagian selatan Pulau Jawa, Jogja dikenal sebagai pusat kebudayaan dan pendidikan, serta salah satu destinasi wisata populer di Indonesia.',
+            'img_wisata' => 'https://d1jyxxz9imt9yb.cloudfront.net/medialib/3331/image/s1300x1300/AdobeStock_478429430_394450_reduced.jpg',
+            'price' => '200000',
+            'ratings' => '4.8',
+            'kota' => 'Yogyakarta.',
+            'paketwisata_id' => '1',
+
+'name' => 'Gunung Latimojong',
+            'description' => 'Yogyakarta, atau lebih dikenal dengan sebutan "Jogja," adalah sebuah kota istimewa dan provinsi di Indonesia yang memiliki daya tarik budaya, sejarah, dan alam yang kaya. Terletak di bagian selatan Pulau Jawa, Jogja dikenal sebagai pusat kebudayaan dan pendidikan, serta salah satu destinasi wisata populer di Indonesia.',
+            'img_wisata' => 'https://cdn.idntimes.com/content-images/post/20171128/mount-bromo-41458-990x742-264ad79563fd9b9bdaedb11f8041e24f.jpg',
+            'price' => '400000',
+            'ratings' => '4.8',
+            'kota' => 'Malang.',
+            'paketwisata_id' => '1',
+
+'name' => 'Gunung Merapi',
+            'description' => 'Yogyakarta, atau lebih dikenal dengan sebutan "Jogja," adalah sebuah kota istimewa dan provinsi di Indonesia yang memiliki daya tarik budaya, sejarah, dan alam yang kaya. Terletak di bagian selatan Pulau Jawa, Jogja dikenal sebagai pusat kebudayaan dan pendidikan, serta salah satu destinasi wisata populer di Indonesia.',
+            'img_wisata' => 'https://indonesiaexpat.id/wp-content/uploads/2019/01/mount-bromo-weather-960x638.jpg',
+            'price' => '600000',
+            'ratings' => '4.8',
+            'kota' => 'Denpasar.',
+            'paketwisata_id' => '1',
+
+'name' => 'Gunung Semeru',
+            'description' => 'Yogyakarta, atau lebih dikenal dengan sebutan "Jogja," adalah sebuah kota istimewa dan provinsi di Indonesia yang memiliki daya tarik budaya, sejarah, dan alam yang kaya. Terletak di bagian selatan Pulau Jawa, Jogja dikenal sebagai pusat kebudayaan dan pendidikan, serta salah satu destinasi wisata populer di Indonesia.',
+            'img_wisata' => 'https://egyptian-gazette.com/wp-content/uploads/2021/08/indoooooo-scaled.jpg',
+            'price' => '800000',
+            'ratings' => '4.8',
+            'kota' => 'Bandung.',
+            'paketwisata_id' => '1',
+
+'name' => 'Pantai Pailus',
+            'description' => 'Yogyakarta, atau lebih dikenal dengan sebutan "Jogja," adalah sebuah kota istimewa dan provinsi di Indonesia yang memiliki daya tarik budaya, sejarah, dan alam yang kaya. Terletak di bagian selatan Pulau Jawa, Jogja dikenal sebagai pusat kebudayaan dan pendidikan, serta salah satu destinasi wisata populer di Indonesia.',
+            'img_wisata' => 'https://akcdn.detik.net.id/visual/2021/07/06/keindahan-wisata-super-prioritas-labuan-bajo_169.jpeg?w=650',
+            'price' => '700000',
+            'ratings' => '4.8',
+            'kota' => 'Jakarta.',
+            'paketwisata_id' => '1',
+
+'name' => 'Gunung Puncak Jaya',
+            'description' => 'Yogyakarta, atau lebih dikenal dengan sebutan "Jogja," adalah sebuah kota istimewa dan provinsi di Indonesia yang memiliki daya tarik budaya, sejarah, dan alam yang kaya. Terletak di bagian selatan Pulau Jawa, Jogja dikenal sebagai pusat kebudayaan dan pendidikan, serta salah satu destinasi wisata populer di Indonesia.',
+            'img_wisata' => 'https://images.nationalgeographic.org/image/upload/v1638892118/EducationHub/photos/mount-vinson-peak.jpg',
+            'price' => '950000',
+            'ratings' => '4.8',
+            'kota' => 'Bogor.',
+            'paketwisata_id' => '1',
+
+'name' => 'Gunung Rinjani',
+            'description' => 'Yogyakarta, atau lebih dikenal dengan sebutan "Jogja," adalah sebuah kota istimewa dan provinsi di Indonesia yang memiliki daya tarik budaya, sejarah, dan alam yang kaya. Terletak di bagian selatan Pulau Jawa, Jogja dikenal sebagai pusat kebudayaan dan pendidikan, serta salah satu destinasi wisata populer di Indonesia.',
+            'img_wisata' => 'https://www.rinjaninationalpark.com/wp-content/uploads/2016/09/gunungrinjanilombok21.jpg',
+            'price' => '360000',
+            'ratings' => '4.8',
+            'kota' => 'Pangandaran.',
+            'paketwisata_id' => '2',
+
+
+
+
+
+
+Paket
+
+ 'paket_wisata' => 'Paket Wisata Murah 1',
+            'budget' => '1000000',
+            'ratings' => '4.8',
+            'kota' => 'Denpasar',
+            'kategori' => 'Alam',
+            'img_paketwisata' => 'https://dynamic-media-cdn.tripadvisor.com/media/photo-o/1d/81/30/3f/caption.jpg?w=700&h=-1&s=1&cx=1846&cy=1833&chk=v1_6ae0a81ae3361e988707',
+            'keterangan' => 'Keterangan Paket Wisata Murah 1',
+            'itinerary' => '06:00 = Berangkat. 10:00 = Istirahat. 12:30 = Makan siang. 15:00 = Explore tempat wisata. 18:00 = Kembali ke penginapan. 20:00 = Makan malam. 22:00 = Istirahat.',
+
+
+
+            'paket_wisata' => 'Paket Wisata Murah 2',
+            'budget' => '2000000',
+            'ratings' => '4.8',
+            'kota' => 'Denpasar',
+            'kategori' => 'Budaya',
+            'img_paketwisata' => 'https://media.timeout.com/images/106025742/image.jpg',
+            'keterangan' => 'Keterangan Paket Wisata Murah 2',
+            'itinerary' => '06:00 = Berangkat. 10:00 = Istirahat. 12:30 = Makan siang. 15:00 = Explore tempat wisata. 18:00 = Kembali ke penginapan. 20:00 = Makan malam. 22:00 = Istirahat.',

@@ -49,7 +49,8 @@ if ($user) {
                     </form>
                 </div>
                 <div class="login-google-container">
-                    <p style="color: gray; cursor: pointer;">Lupa kata sandi</p>
+                    <a href="{{ route('register') }}" style="text-decoration: none; color: white;"><p style="color: gray; cursor: pointer;">Belum punya akun?</p></a>
+                    <a href="{{ route('res-password') }}" style="text-decoration: none; color: white;"><p style="color: gray; cursor: pointer;">Lupa kata sandi</p></a>
                     <a href="{{ route('auth.google') }}"  style="text-decoration: none; color: black; width: 100%; display: flex; align-items: center;  margin-top: 10px;
                         justify-content: center;
                         text-decoration: none;

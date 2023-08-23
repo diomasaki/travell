@@ -16,11 +16,13 @@ class WisataSeeders extends Seeder
     public function run()
     {
         DB::table('wisata')->insert([
-            'name' => 'Bromo',
-            'description' => 'Gunung Bromo atau dalam bahasa Tengger dieja "Brama", juga disebut Kaldera Tengger, adalah sebuah gunung berapi aktif di Jawa Timur, Indonesia.',
-            'img_wisata' => 'https://nahwatravel.co.id/wp-content/uploads/2022/05/Pemandangan-Bukit-Cinta-Bromo.jpg',
-            'price' => '800.000',
-            'kota' => 'Probolinggo',
+            'name' => 'Gunung Rinjani',
+            'description' => 'Yogyakarta, atau lebih dikenal dengan sebutan "Jogja," adalah sebuah kota istimewa dan provinsi di Indonesia yang memiliki daya tarik budaya, sejarah, dan alam yang kaya. Terletak di bagian selatan Pulau Jawa, Jogja dikenal sebagai pusat kebudayaan dan pendidikan, serta salah satu destinasi wisata populer di Indonesia.',
+            'img_wisata' => 'https://www.rinjaninationalpark.com/wp-content/uploads/2016/09/gunungrinjanilombok21.jpg',
+            'price' => '360000',
+            'ratings' => '4.8',
+            'kota' => 'Pangandaran.',
+            'paketwisata_id' => '2',
         ]);
     }
 }
