@@ -77,6 +77,7 @@ Route::put('/paketwisata/edit/{id}/updateimage', [PaketWisataController::class, 
 //CRUD SIDE || CREATE
 Route::get('/paketwisata/buat', [PaketWisataController::class, 'createIndex'])->name('create-wisata');
 Route::post('/paketwisata/buat/berhasil', [PaketWisataController::class, 'create'])->name('paketwisata.create');
+Route::get('/paketwisata/{id}/delete', [PaketWisataController::class, 'deletePaketWisata'])->name('paketwisata.delete');
 
 
 
@@ -103,6 +104,12 @@ Route::get('/destinasi/edit/{id}', [WisataController::class, 'indexOfEditWisata'
 Route::put('/destinasi/edit/{id}/update', [WisataController::class, 'editWisataHandler']);
 Route::put('/destinasi/edit/{id}/update/image', [WisataController::class, 'updateImageWisataHandler']);
 Route::put('/destinasi/edit/{id}/update/paketwisataid', [WisataController::class, 'updatePaketWisataId'])->name('updatePaketWisataId');
+Route::get('/destinasi/{id}/delete', [WisataController::class, 'deleteWisata'])->name('wisata.delete');
+
+
+//PROFILE
+Route::get('/profile', [AuthController::class, 'profile'])->name('profile');
+Route::put('/profile/update', [AuthController::class, 'updateProfile'])->name('update.profile');
 
 
 

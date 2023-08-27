@@ -76,15 +76,16 @@ function formatCurrency($value) {
               <h1 class="detail-nama-paket">Rencana Perjalanan</h1>
               <i class="fa fa-pencil" aria-hidden="true"></i>
               <p class="desc-pkt-wisata" id="editable-heading-itinerary" contenteditable>
-                  <?php
-                  $itineraryLines = explode('.', $detailData->itinerary);
-                  foreach ($itineraryLines as $line) {
-                      if (!empty(trim($line))) {
-                          echo "<span>{$count}.</span> {$line}<br>";
-                          $count++;
-                      }
-                  }
-                  ?>
+                <?php
+                $itineraryLines = explode('.', $detailData->itinerary);
+                foreach ($itineraryLines as $line) {
+                    if (!empty(trim($line))) {
+                        // Trim any existing spaces and add a period
+                        $line = rtrim($line, " \t\n\r\0\x0B") . '.';
+                        echo "{$line}<br>";
+                    }
+                }
+                ?>
               </p><button id="edit-submit-btn-itinerary" style="display: none;">Save Changes</button>
             </div>
             <div class="deskripsi-paket-wrapper">

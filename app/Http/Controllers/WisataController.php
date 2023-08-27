@@ -103,7 +103,6 @@ class WisataController extends Controller
         }
         $wisata->price = $request->input('price');
         $wisata->kota = $request->input('kota');
-        $wisata->paketwisata_id = $request->input('paketwisata_id');
         $wisata->ratings = $request->input('ratings');
         
      try{
@@ -207,5 +206,12 @@ class WisataController extends Controller
         }
     
         return response()->json(['message' => 'No image uploaded'], 400);
+    }
+
+
+    public function deleteWisata($id) {
+        $Wisata = Wisata::find($id);
+        $Wisata->delete();
+        return redirect('/destinasi')->with('success', 'Your action was successful!');
     }
 }

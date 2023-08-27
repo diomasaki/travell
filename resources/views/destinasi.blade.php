@@ -30,7 +30,7 @@ if (!$user) {
       <div class="listContainer">
         <div class="listWrapper">
           <div class="listSearch">
-            <h1 class="lsTitle">Pencarian</h1>
+            <h1 class="lsTitle">Form Pencarian</h1>
           <form action="{{ route('destinasi-filter') }}" method="POST" class="pencarian-paketwisata-filter">
             @csrf
             <!-- <div class="lsItem">

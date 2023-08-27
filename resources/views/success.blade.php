@@ -147,7 +147,7 @@ $kodeTiket = generateRandomNumber();
         </div>
     </div>
     <div class="footer">
-     Harap Berikan Kode Tiket Ini Kepada Petugas Kami </br></br>Terima Kasih Atas Pembelian Anda !
+     Harap Simpan dan Berikan Kode Tiket Ini Kepada Petugas Kami </br></br>Terima Kasih Atas Pembelian Anda !
     </div>
     @include('components.footer')
 </body>

@@ -23,6 +23,26 @@ class PaketWisataTable extends Migration
         $table->text('keterangan');
         $table->string('ratings');
         $table->text('itinerary');
+        $table->string('slot1')->nullable();
+        $table->string('slot2')->nullable();
+        $table->string('slot3')->nullable();
+        $table->string('slot4')->nullable();
+        $table->string('slot5')->nullable();
+        $table->string('slot6')->nullable();
+        $table->string('slot7')->nullable();
+        $table->string('slot8')->nullable();
+        $table->string('slot9')->nullable();
+        $table->string('slot10')->nullable();
+        $table->string('slot11')->nullable();
+        $table->string('slot12')->nullable();
+        $table->string('slot13')->nullable();
+        $table->string('slot14')->nullable();
+        $table->string('slot15')->nullable();
+        $table->string('slot16')->nullable();
+        $table->string('slot17')->nullable();
+        $table->string('slot18')->nullable();
+        $table->string('slot19')->nullable();
+        $table->string('slot20')->nullable();
         $table->timestamps(); 
         });
     }

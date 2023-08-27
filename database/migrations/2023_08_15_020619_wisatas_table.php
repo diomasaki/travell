@@ -20,7 +20,6 @@ class WisatasTable extends Migration
             $table->string('img_wisata');
             $table->integer('price');
             $table->string('kota');
-            $table->string('paketwisata_id');
             $table->string('ratings');
             $table->timestamps(); 
         });

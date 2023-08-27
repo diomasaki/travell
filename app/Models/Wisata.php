@@ -23,6 +23,5 @@ class Wisata extends Model
         'price',
         'kota',
         'ratings',
-        'paketwisata_id'
     ];
 }

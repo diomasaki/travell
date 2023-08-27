@@ -13,7 +13,7 @@ class PaketWisata extends Model
 
     public function wisata()
     {
-        return $this->hasMany(Wisata::class, 'paketwisata_id');
+        return $this->hasMany(Wisata::class, 'name');
     }
 
 
@@ -32,6 +32,26 @@ class PaketWisata extends Model
         'kategori',
         'keterangan',
         'ratings',
-        'itinerary'
+        'itinerary',
+        'slot1',
+        'slot2',
+        'slot3',
+        'slot4',
+        'slot5',
+        'slot6',
+        'slot7',
+        'slot8',
+        'slot9',
+        'slot10',
+        'slot11',
+        'slot12',
+        'slot13',
+        'slot14',
+        'slot15',
+        'slot16',
+        'slot17',
+        'slot18',
+        'slot19',
+        'slot20',
     ];
 }

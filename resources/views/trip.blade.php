@@ -35,11 +35,13 @@ if (!$user) {
             @foreach ($results as $index => $result)
             @if ($index < 4)
             <div class="fpItem">
+            <a href="{{ route('wisata-detail', ['id' => $result->id]) }}" style="text-decoration: none; color: white;">
                 <img
                 src="{{ asset('uploads/img/' . $result->img_wisata) }}"
                 alt=""
                 class="fpImg"
                 />
+            </a>
                 <span class="fpName">{{ $result->name }}</span>
                 <span class="fpCity">{{$result->description}}</span>
                 <span class="fpPrice">Harga tiket masuk Rp.{{$result->price}}</span>

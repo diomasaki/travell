@@ -22,7 +22,6 @@ class WisataSeeders extends Seeder
             'price' => '360000',
             'ratings' => '4.8',
             'kota' => 'Pangandaran.',
-            'paketwisata_id' => '2',
         ]);
     }
 }

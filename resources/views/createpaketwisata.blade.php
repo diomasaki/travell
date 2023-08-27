@@ -1,3 +1,15 @@
+<?php
+use Illuminate\Support\Facades\Auth;
+
+$user = Auth::check();
+$users = Auth::user();
+
+if (!$user || ($user && !$users->isAdmin)) {
+    header("Location: /login");
+    exit;
+}
+?>
+
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -10,122 +22,88 @@
     <title>Buat Paket Wisata</title>
 </head>
 <body>
-<div>
+    @include('components.navbar')
     @auth
-    <div class="header-container-create">
-        <div class="header-container-wrapper">
-            <div class="top-header-create">
-                <div class="img-header-cont">
-                    <img class="header-cr" src="https://static.vecteezy.com/system/resources/previews/009/135/093/original/yie-logo-yie-letter-yie-letter-logo-design-initials-yie-logo-linked-with-circle-and-uppercase-monogram-logo-yie-typography-for-technology-business-and-real-estate-brand-vector.jpg" alt="">
+<div style="background-color: rgb(167, 167, 167); height: 130vh;">
+        <div class="container-xvh">
+            <div class="create-ff-zz">
+                <div class="wrapper-ff-zz">
+                    <div class="detail-wisata-infos">
+                       <div class="gambar-detail-macam-paket-ssh"> 
+                            <form action="{{  route('paketwisata.create')  }}" method="POST" enctype="multipart/form-data" class="xd-xt">
+                            @csrf
+                            <div class="gambar-detail-wrapper-ssh">
+                                <div class="ssh-alo">
+                                    <img
+                                    src="https://www.costacruises.eu/content/dam/costa/inventory-assets/ports/JTR/jtr-santorini-port-1.jpg.image.2048.1536.medium.jpg"
+                                    alt=""
+                                    class="paket-wisata-detailImgs"
+                                    />
+                                </div>
+                                <div class="check-box-conts">
+                                    <div class="ssh-xd">
+                                        <h1 class="fz-eer">Pilih Wisata</h1>
+                                    </div>
+                                    <div class="borge-xsl" style="display: flex;">
+                                    @foreach ($wisata as $wisatas)
+                                    <div class="check-box-destination">
+                                        <div class="menu-item-check">
+                                            <label for="pid{{ $loop->iteration }}">{{ $wisatas->name }}</label>
+                                        </div>
+                                        <div class="menu-item-checks">
+                                            <input type="checkbox" id="pid{{ $loop->iteration }}" class="cb" name="slot{{ $loop->iteration }}" value="{{ $wisatas->name }}">
+                                        </div>
+                                    </div>
+                                    @endforeach
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="container-xprice-ssh">
+                                <div class="input-container-fp">
+                                    <label for="paket_wisata" class="fp">Nama Paket Wisata</label>
+                                    <input type="text" id="paket_wisata" name="paket_wisata" class="fpass">
+                                </div>
+                                <div class="input-container-fp">
+                                    <label for="budget" class="fp">Harga</label>
+                                    <input type="number" id="budget" name="budget" class="fpass" >
+                                </div>
+                                <div class="input-container-fp">
+                                    <label for="kota" class="fp">Kota</label>
+                                    <input type="text" id="kota" name="kota" class="fpass" >
+                                </div>
+                                <div class="input-container-fp">
+                                    <label for="kategori" class="fp">Kategori</label>
+                                    <input type="text" id="kategori" name="kategori" class="fpass">
+                                </div>
+                                <div class="input-container-fp">
+                                    <label for="img_paketwisata" class="fp">Gambar</label>
+                                    <input type="file" id="img_paketwisata" name="img_paketwisata" class="fpass" style="border: none;">
+                                </div>
+                                <div class="input-container-fp">
+                                    <label for="keterangan" class="fp">Keterangan</label>
+                                    <input type="text" id="keterangan" name="keterangan" class="fpass">
+                                </div>
+                                <div class="input-container-fp">
+                                    <label for="ratings" class="fp">Ratings</label>
+                                    <input type="text" id="ratings" name="ratings" class="fpass" >
+                                </div>
+                                <div class="input-container-fp">
+                                    <label for="itinerary" class="fp">Itinerary</label>
+                                    <input type="text" id="itinerary" name="itinerary" class="fpass">
+                                </div>
+                                <div class="input-container-fp">
+                                    <button type="submit" class="xx-sha">Submit</button>
+                                </div>
+                            </div>
+                            </form>
+                        </div>
+                    </div>
                 </div>
-                <div class="info-create-pkt">
-                    <div class="logo-pkt-header">Youridealescape.</div>
-                    <h1 style="margin-left: 30px; color: white;"><small>youridealescape.com <i style="margin-left: 10px;" class="fa fa-share-square-o" aria-hidden="true"></i></small></h1>
-                </div>
+                <!-- END OF CREATE--FF--ZZ -->
             </div>
+        <!-- END OF CONTAINER-XVH -->
         </div>
-        <span class="span-he">Membuat Paket Wisata</span>
-    </div>
-    @if(session('success'))
-    <div class="alert alert-success">
-        {{ session('success') }}
-    </div>
-    @endif
-    <form action="{{route('paketwisata.create')}}" method="POST" enctype="multipart/form-data">
-        @csrf
-    <div class="container-form-create">
-        <div class="wrapper-form-wisata">
-            <div class="left-form-wist">
-                <div class="divvv"><small class="ft-small">Nama Paket Wisata</small><small style="font-size: 15px; margin-top: 20px;">Berikan nama untuk paket wisata</small></div>
-            </div>
-            <div class="right-form-wist">
-                <input type="text" class="form-create-pkt" name="paket_wisata" placeholder="Nama paket">
-            </div>
-        </div>
-    </div>
-    <div class="container-form-create">
-        <div class="wrapper-form-wisata">
-            <div class="left-form-wist">
-                <div class="divvv"><small class="ft-small">Harga</small><small style="font-size: 15px; margin-top: 20px;">Berikan harga untuk paket wisata</small></div>
-            </div>
-            <div class="right-form-wist">
-            <small style="font-size: 15px; margin-top: 20px;"></small>Rp.  <input type="number" class="form-create-pkt" name="budget" placeholder="1000000">
-            </div>
-        </div>
-    </div>
-    <div class="container-form-create">
-        <div class="wrapper-form-wisata">
-            <div class="left-form-wist">
-                <div class="divvv"><small class="ft-small">Kota</small><small style="font-size: 15px; margin-top: 20px;">Berikan kota untuk paket wisata</small></div>
-            </div>
-            <div class="right-form-wist">
-                <input type="text" class="form-create-pkt" placeholder="Nama kota" name="kota">
-            </div>
-        </div>
-    </div>
-    <div class="container-form-create">
-        <div class="wrapper-form-wisata">
-            <div class="left-form-wist">
-                <div class="divvv"><small class="ft-small">Kategori</small><small style="font-size: 15px; margin-top: 20px;">Berikan kategori untuk paket wisata</small></div>
-            </div>
-            <div class="right-form-wist">
-                <input type="text" class="form-create-pkt" placeholder="Nama kategori" name="kategori">
-            </div>
-        </div>
-    </div>
-    <div class="container-form-create">
-        <div class="wrapper-form-wisata">
-            <div class="left-form-wist">
-                <div class="divvv"><small class="ft-small">Gambar Paket Wisata</small><small style="font-size: 15px; margin-top: 20px;">Berikan gambar untuk paket wisata</small></div>
-            </div>
-            <div class="gambar-detail-macam-paket">
-              <div class="gambar-detail-wrapper">
-                <img
-                  src="https://media.timeout.com/images/106025742/image.jpg"
-                  alt=""
-                  class="ex-img-cr"
-                />
-                <input
-                    type="file"
-                    name="img_paketwisata"
-                    style="margin-top:15px;"
-                />
-              </div>
-          </div>
-        </div>
-    </div>
-    <div class="container-form-create">
-        <div class="wrapper-form-wisata">
-            <div class="left-form-wist">
-                <div class="divvv"><small class="ft-small">Keterangan</small><small style="font-size: 15px; margin-top: 20px;">Berikan keterangan untuk paket wisata</small></div>
-            </div>
-            <div class="right-form-wist">
-                <input type="text" class="form-create-pkt" placeholder="Berikan keterangan paket wisata" name="keterangan">
-            </div>
-        </div>
-    </div>
-    <div class="container-form-create">
-        <div class="wrapper-form-wisata">
-            <div class="left-form-wist">
-                <div class="divvv"><small class="ft-small">Ratings</small><small style="font-size: 15px; margin-top: 20px;">Berikan ratings untuk paket wisata</small></div>
-            </div>
-            <div class="right-form-wist">
-                <input type="text" class="form-create-pkt" placeholder="Rating paket wisata" name="ratings">
-            </div>
-        </div>
-    </div>
-    <div class="container-form-create">
-        <div class="wrapper-form-wisata">
-            <div class="left-form-wist">
-                <div class="divvv"><small class="ft-small">Initerary</small><small style="font-size: 15px; margin-top: 20px;">Berikan rencana perjalanan untuk paket wisata</small></div>
-            </div>
-            <div class="right-form-wist">
-                <input type="text" class="form-create-pkt" placeholder="Berikan list aktivitas paket wisata" name="itinerary">
-            </div>
-            <button class="create-wisata-btn" type="submit">Submit</button>
-        </div>
-    </div>
-    </form>
-    @endauth
+</div>
+@endauth
 </body>
 </html>

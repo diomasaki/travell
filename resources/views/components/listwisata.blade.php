@@ -66,9 +66,11 @@ function formatCurrency($value) {
             <small>Edit</small>
           </div>
           </a>
-          <div class="items-configuration">
-            <small>Delete</small>
-          </div>
+          <a href="{{ route('wisata.delete', ['id' => $result->id])  }}" style="text-decoration: none; color: black;">
+            <div class="items-configuration">
+              <small>Delete</small>
+            </div>
+          </a>
         </div>
         @endif
         <div class="siRating">

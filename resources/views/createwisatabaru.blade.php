@@ -1,3 +1,15 @@
+<?php
+use Illuminate\Support\Facades\Auth;
+
+$user = Auth::check();
+$users = Auth::user();
+
+if (!$user || ($user && !$users->isAdmin)) {
+    header("Location: /login");
+    exit;
+}
+?>
+
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -7,124 +19,66 @@
     href="https://fonts.googleapis.com/css2?family=Urbanist:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
     rel="stylesheet">
     <link rel="icon" href="https://d1csarkz8obe9u.cloudfront.net/posterpreviews/travel-agency-logo%2C-travel-company-logo-%281%29-design-template-bc9dcb1ca0e92d6394dea26418a87c8e_screen.jpg?ts=1667975913">
-    <title>Buat Paket Wisata</title>
+    <title>Buat Wisata</title>
 </head>
 <body>
-<div>
+    @include('components.navbar')
     @auth
-    <div class="header-container-create">
-        <div class="header-container-wrapper">
-            <div class="top-header-create">
-                <div class="img-header-cont">
-                    <img class="header-cr" src="https://static.vecteezy.com/system/resources/previews/009/135/093/original/yie-logo-yie-letter-yie-letter-logo-design-initials-yie-logo-linked-with-circle-and-uppercase-monogram-logo-yie-typography-for-technology-business-and-real-estate-brand-vector.jpg" alt="">
-                </div>
-                <div class="info-create-pkt">
-                    <div class="logo-pkt-header">Youridealescape.</div>
-                    <h1 style="margin-left: 30px; color: white;"><small>youridealescape.com <i style="margin-left: 10px;" class="fa fa-share-square-o" aria-hidden="true"></i></small></h1>
-                </div>
-            </div>
-        </div>
-        <span class="span-he">Membuat Paket Wisata</span>
-    </div>
-    @if(session('success'))
-    <div class="alert alert-success">
-        {{ session('success') }}
-    </div>
-    @endif
-    <form action="{{route('wisata.create')}}" method="POST" enctype="multipart/form-data">
-        @csrf
-    <div class="container-form-create">
-        <div class="wrapper-form-wisata">
-            <div class="left-form-wist">
-                <div class="divvv"><small class="ft-small">Nama Wisata</small><small style="font-size: 15px; margin-top: 20px;">Berikan nama wisata yang diinginkan</small></div>
-            </div>
-            <div class="right-form-wist">
-                <input type="text" class="form-create-pkt" name="name" placeholder="Gunung Bromo">
-            </div>
-        </div>
-    </div>
-    <div class="container-form-create">
-        <div class="wrapper-form-wisata">
-            <div class="left-form-wist">
-                <div class="divvv"><small class="ft-small">Kota</small><small style="font-size: 15px; margin-top: 20px;">Dimana kota wisata berada</small></div>
-            </div>
-            <div class="right-form-wist">
-                <input type="text" class="form-create-pkt" placeholder="Malang" name="kota">
-            </div>
-        </div>
-    </div>
-    <div class="container-form-create">
-        <div class="wrapper-form-wisata">
-            <div class="left-form-wist">
-                <div class="divvv"><small class="ft-small">Deskripsi</small><small style="font-size: 15px; margin-top: 20px;">Berikan deskripsi atau keterangan terkait wisata</small></div>
-            </div>
-            <div class="right-form-wist">
-                <input type="text" class="form-create-pkt" placeholder="Bali dikenal dengan sebutan Pulau Dewata karena memiliki beragam tempat suci, upacara adat, dan kebudayaan yang sangat kaya. Pulau ini menawarkan berbagai atraksi dan aktivitas untuk para wisatawan, mulai dari pantai-pantai yang menakjubkan, sawah hijau yang indah, hingga gunung-gunung yang mempesona." name="description">
-            </div>
-        </div>
-    </div>
-    <div class="container-form-create">
-        <div class="wrapper-form-wisata">
-            <div class="left-form-wist">
-                <div class="divvv"><small class="ft-small">Harga</small><small style="font-size: 15px; margin-top: 20px;">Berikan harga untuk tiket wisata</small></div>
-            </div>
-            <div class="right-form-wist">
-            <small style="font-size: 15px; margin-top: 20px;"></small>Rp.  <input type="number" class="form-create-pkt" name="price" placeholder="1000000">
-            </div>
-        </div>
-    </div>
-    <div class="container-form-create">
-        <div class="wrapper-form-wisata">
-            <div class="left-form-wist">
-                <div class="divvv"><small class="ft-small">Gambar Wisata</small><small style="font-size: 15px; margin-top: 20px;">Berikan gambar untuk ditampilan pada menu destinasi</small></div>
-            </div>
-            <div class="gambar-detail-macam-paket">
-              <div class="gambar-detail-wrapper">
-                <img
-                  src="https://media.timeout.com/images/106025742/image.jpg"
-                  alt=""
-                  class="ex-img-cr"
-                />
-                <input
-                    type="file"
-                    name="img_wisata"
-                    style="margin-top:15px;"
-                />
-              </div>
-          </div>
-        </div>
-    </div>
-    <div class="container-form-create">
-        <div class="wrapper-form-wisata">
-            <div class="left-form-wist">
-                <div class="divvv"><small class="ft-small">Paket Wisata</small><small style="font-size: 15px; margin-top: 20px;">Masukkan wisata ke dalam paket wisata yang diinginkan</small></div>
-            </div>
-            <div class="right-form-wist">
-                @foreach ($paketWisata as $paketWisatas)
-                <div class="check-box-destination">
-                    <div class="menu-item-check">
-                        <label for="pid">{{ $paketWisatas->paket_wisata }}</label>
-                    </div>
-                    <div class="menu-item-check">
-                        <input type="checkbox" id="pid" class="cb" placeholder="" name="paketwisata_id" value="{{ $paketWisatas->id }}">
+<div style="background-color: rgb(167, 167, 167); height: 130vh;">
+        <div class="container-xvh">
+            <div class="create-ff-zz">
+                <div class="wrapper-ff-zz">
+                    <div class="detail-wisata-infos">
+                       <div class="gambar-detail-macam-paket-ssh"> 
+                            <form action="{{ route('wisata.create') }}" method="POST" enctype="multipart/form-data" class="xd-xt">
+                            @csrf
+                            <div class="gambar-detail-wrapper-ssh">
+                                <div class="ssh-alo">
+                                    <img
+                                    src="https://www.costacruises.eu/content/dam/costa/inventory-assets/ports/JTR/jtr-santorini-port-1.jpg.image.2048.1536.medium.jpg"
+                                    alt=""
+                                    class="paket-wisata-detailImgs"
+                                    />
+                                </div>
+                            </div>
+                            <div class="container-xprice-ssh">
+                                <div class="input-container-fp">
+                                    <label for="name" class="fp">Nama Wisata</label>
+                                    <input type="text" id="name" name="name" class="fpass">
+                                </div>
+                                <div class="input-container-fp">
+                                    <label for="description" class="fp">Deskripsi Wisata</label>
+                                    <input type="text" id="description" name="description" class="fpass" >
+                                </div>
+                                <div class="input-container-fp">
+                                    <label for="img_wisata" class="fp">Gambar</label>
+                                    <input type="file" id="img_wisata" name="img_wisata" class="fpass" style="border: none;">
+                                </div>
+                                <div class="input-container-fp">
+                                    <label for="price" class="fp">Harga</label>
+                                    <input type="number" id="price" name="price" class="fpass" >
+                                </div>
+                                <div class="input-container-fp">
+                                    <label for="kota" class="fp">Kota</label>
+                                    <input type="text" id="kota" name="kota" class="fpass">
+                                </div>      
+                                <div class="input-container-fp">
+                                    <label for="ratings" class="fp">Ratings</label>
+                                    <input type="text" id="ratings" name="ratings" class="fpass">
+                                </div>
+                                <div class="input-container-fp">
+                                    <button type="submit" class="xx-sha">Submit</button>
+                                </div>
+                            </div>
+                            </form>
+                        </div>
                     </div>
                 </div>
-                @endforeach
+                <!-- END OF CREATE--FF--ZZ -->
             </div>
+        <!-- END OF CONTAINER-XVH -->
         </div>
-    </div>
-    <div class="container-form-create">
-        <div class="wrapper-form-wisata">
-            <div class="left-form-wist">
-                <div class="divvv"><small class="ft-small">Ratings</small><small style="font-size: 15px; margin-top: 20px;">Berikan ratings untuk wisata</small></div>
-            </div>
-            <div class="right-form-wist">
-                <input type="text" class="form-create-pkt" placeholder="8.8" name="ratings">
-            </div>
-            <button class="create-wisata-btn" type="submit">Submit</button>
-        </div>
-    </div>
-    </form>
-    @endauth
+</div>
+@endauth
 </body>
 </html>

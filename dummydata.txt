@@ -80,3 +80,7 @@ Paket
             'img_paketwisata' => 'https://media.timeout.com/images/106025742/image.jpg',
             'keterangan' => 'Keterangan Paket Wisata Murah 2',
             'itinerary' => '06:00 = Berangkat. 10:00 = Istirahat. 12:30 = Makan siang. 15:00 = Explore tempat wisata. 18:00 = Kembali ke penginapan. 20:00 = Makan malam. 22:00 = Istirahat.',
+
+
+
+            <div class="menuItem-nav"><div class="search-container"><input type="text" class="search"><i class="fa fa-search" aria-hidden="true" style="color: white;"></i></div></div>

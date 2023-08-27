@@ -156,4 +156,22 @@ class AuthController extends Controller
                             ->withErrors(['email' => __($status)]);
     }
 
+
+    public function profile() {
+        return view('profile')->with('user', auth()->user());
+    }
+
+
+    public function updateProfile(Request $request) {
+        $user = auth()->user();
+
+        $user->update([
+            'email' => $request->email,
+            'password' => Hash::make($request->password),
+        ]);
+
+        session()->flash('success', 'User updated...');
+        return redirect()->back();
+    }
+
 }

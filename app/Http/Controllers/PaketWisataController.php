@@ -118,7 +118,34 @@ class PaketWisataController extends Controller
         $jumlahorang = session('jumlahorang');
         $durasi = session('durasi');
         $userEmail = Auth::user()->email;
-        return view('detailwisata', ['detailData' => $detailData, 'jumlahorang' => $jumlahorang, 'durasi' => $durasi]);
+
+        // Retrieve related wisata data where slot columns match the name
+        $relatedWisata = Wisata::whereIn('name', [
+        $detailData->slot1,
+        $detailData->slot2,
+        $detailData->slot3,
+        $detailData->slot4,
+        $detailData->slot5,
+        $detailData->slot6,
+        $detailData->slot7,
+        $detailData->slot8,
+        $detailData->slot9,
+        $detailData->slot10,
+        $detailData->slot11,
+        $detailData->slot12,
+        $detailData->slot13,
+        $detailData->slot14,
+        $detailData->slot15,
+        $detailData->slot16,
+        $detailData->slot17,
+        $detailData->slot18,
+        $detailData->slot19,
+        $detailData->slot20,
+        // Add more slot columns here
+    ])->get();
+
+
+        return view('detailwisata', ['detailData' => $detailData, 'jumlahorang' => $jumlahorang, 'durasi' => $durasi, 'relatedWisata' => $relatedWisata]);
     }
 
 
@@ -127,7 +154,30 @@ class PaketWisataController extends Controller
 
     //GET ALL ITENARYS
     public function getAllItenarys($id) {
-        $itenary = PaketWisata::with('wisata')->findOrFail($id);
+        $detailData = PaketWisata::with('wisata')->findOrFail($id);
+        $itenary = Wisata::whereIn('name', [
+            $detailData->slot1,
+            $detailData->slot2,
+            $detailData->slot3,
+            $detailData->slot4,
+            $detailData->slot5,
+            $detailData->slot6,
+            $detailData->slot7,
+            $detailData->slot8,
+            $detailData->slot9,
+            $detailData->slot10,
+            $detailData->slot11,
+            $detailData->slot12,
+            $detailData->slot13,
+            $detailData->slot14,
+            $detailData->slot15,
+            $detailData->slot16,
+            $detailData->slot17,
+            $detailData->slot18,
+            $detailData->slot19,
+            $detailData->slot20,
+            // Add more slot columns here
+        ])->get();
         return view('itenary', ['itenary' => $itenary]);
     }
 
@@ -147,7 +197,8 @@ class PaketWisataController extends Controller
     //CRUD SIDE | EDIT VIEW
     public function indexOfEditPaketWisata($id) {
         $detailData = PaketWisata::with('wisata')->findOrFail($id);
-        return view('editpaketwisata', ['detailData' => $detailData]);
+        $wisata = DB::table('wisata')->get();
+        return view('editpaketwisata', ['detailData' => $detailData, 'wisata' => $wisata]);
     }
 
 
@@ -189,6 +240,25 @@ class PaketWisataController extends Controller
         return redirect()->back()->with('status', 'Paket Wisata Diperbarui!');
     }
 
+
+    //UPDATE PAKET WISATA | WISATA
+    public function updatePaketWisataIsiWisata() {
+        $paketwisata = PaketWisata::find($id);
+        $paketwisata->slot1 = $request->input('slot1');
+        $paketwisata->slot2 = $request->input('slot2');
+        $paketwisata->slot3 = $request->input('slot3');
+        $paketwisata->slot4 = $request->input('slot4');
+        $paketwisata->slot5 = $request->input('slot5');
+        $paketwisata->slot6 = $request->input('slot6');
+
+        try{
+            $paketwisata->update();
+            return redirect('/trip')->with('success', 'Your action was successful!');
+        }catch (Exception $e) {
+            return response()->json(['message' => 'failed to create paket wisata!', 500]);
+        }
+    }
+
     
     //UPDATE IMAGE PAKET WISATA
     public function updateImage(Request $request, $id) {
@@ -200,7 +270,7 @@ class PaketWisataController extends Controller
         $request->file('img_paketwisata')->move('uploads/img/' , $request->file('img_paketwisata')->getClientOriginalName());
         $paketwisata->img_paketwisata = $request->file('img_paketwisata')->getClientOriginalName();
         $paketwisata->save();
-        return response()->json(['message' => 'Image updated successfully'], 200);
+        return redirect('/trip')->with('success', 'Your action was successful!');
     }else {
 
         return response()->json(['message' => 'No image uploaded'], 400);
@@ -210,7 +280,8 @@ class PaketWisataController extends Controller
 
 //CREATE PAKET WISATA VIEW
 public function createIndex() {
-    return view('createpaketwisata');
+    $wisata = DB::table('wisata')->get();
+    return view('createpaketwisata', ['wisata' => $wisata]);
 }
 
 
@@ -229,6 +300,26 @@ public function create(Request $request) {
    $paketwisata->keterangan = $request->input('keterangan');
    $paketwisata->ratings = $request->input('ratings');
    $paketwisata->itinerary = $request->input('itinerary');
+   $paketwisata->slot1 = $request->input('slot1');
+   $paketwisata->slot2 = $request->input('slot2');
+   $paketwisata->slot3 = $request->input('slot3');
+   $paketwisata->slot4 = $request->input('slot4');
+   $paketwisata->slot5 = $request->input('slot5');
+   $paketwisata->slot6 = $request->input('slot6');
+   $paketwisata->slot7 = $request->input('slot7');
+   $paketwisata->slot8 = $request->input('slot8');
+   $paketwisata->slot9 = $request->input('slot9');
+   $paketwisata->slot10 = $request->input('slot10');
+   $paketwisata->slot11 = $request->input('slot11');
+   $paketwisata->slot12 = $request->input('slot12');
+   $paketwisata->slot13 = $request->input('slot13');
+   $paketwisata->slot14 = $request->input('slot14');
+   $paketwisata->slot15 = $request->input('slot15');
+   $paketwisata->slot16 = $request->input('slot16');
+   $paketwisata->slot17 = $request->input('slot17');
+   $paketwisata->slot18 = $request->input('slot18');
+   $paketwisata->slot19 = $request->input('slot19');
+   $paketwisata->slot20 = $request->input('slot20');
    
 try{
     $paketwisata->save();
@@ -236,6 +327,14 @@ try{
 }catch (Exception $e) {
     return response()->json(['message' => 'failed to create paket wisata!', 500]);
 }
+}
+
+
+
+public function deletePaketWisata($id) {
+    $paketWisata = PaketWisata::find($id);
+    $paketWisata->delete();
+    return redirect('/trip')->with('success', 'Your action was successful!');
 }
     
 

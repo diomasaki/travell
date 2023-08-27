@@ -9,8 +9,8 @@
     <title></title>
 </head>
 <body>
-@if (!empty($itenary->wisata) && is_array($itenary->wisata) || $itenary->wisata instanceof Countable)
-        @foreach ($itenary->wisata as $itenarys)
+@if (!empty($itenary) && is_array($itenary) || $itenary instanceof Countable)
+        @foreach ($itenary as $itenarys)
 <div class="searchItem">
       <img
         src="{{ asset('uploads/img/' . $itenarys->img_wisata) }}"

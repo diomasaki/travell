@@ -49,12 +49,12 @@ function formatCurrency($value) {
         <a href="{{ route('itenary', ['id' => $detailData->id])}}" style="text-decoration: none; color: white;"> <button class="bookNow">Lihat Kumpulan Wisata</button></a>
           <h1 class="detail-nama-paket">{{$detailData->paket_wisata}}</h1>
           <div class="detail-alamat-paket">
-            @foreach ($detailData->wisata as $index => $detailWisataInformation)
+          @foreach ($relatedWisata as $index => $detailWisataInformation)
             <span>{{ $detailWisataInformation->name }}</span>
-            @if ($index < count($detailData->wisata) - 1)
-              <span>-</span>
+            @if ($index < count($relatedWisata) - 1)
+                <span>-</span>
             @endif
-            @endforeach
+          @endforeach
           </div>
           <span class="jarak-paket-wisata">
             {{ $detailData->kota }}
@@ -63,13 +63,13 @@ function formatCurrency($value) {
           <small>Kategori: {{ $detailData->kategori }}</small>
           </span>
           <div class="gambar-detail-macam-paket">
-          @foreach ($detailData->wisata as $foto)
+          @foreach ($relatedWisata as $index => $foto)
               <div class="gambar-detail-wrapper" key="{{ $foto->id }}">
                 <img
                   src="{{ asset('uploads/img/' . $foto->img_wisata) }}"
                   alt=""
                   class="paket-wisata-detailImg"
-                  onclick="openSlider('{{ $foto->img_wisata }}', {{ $index }})"
+                  onclick="openSlider('{{ asset('uploads/img/' . $foto->img_wisata) }}', {{ $index }})"
                 />
               </div>
           @endforeach
@@ -79,10 +79,10 @@ function formatCurrency($value) {
               <h1 class="detail-nama-paket">List Wisata {{ $detailData->paket_wisata }}</h1>
               <p class="desc-pkt-wisata">
               <?php $count = 1?>
-              @foreach ($detailData->wisata as $index => $detailWisataInformation)
+              @foreach ($relatedWisata as $index => $detailWisataInformation)
               <span><?=$count++?></span>
               <span>{{ $detailWisataInformation->name }}</span>
-              @if ($index < count($detailData->wisata) - 1)
+              @if ($index < count($relatedWisata) - 1)
               </br>
               @endif
               @endforeach
@@ -183,7 +183,7 @@ function toogleMenu() {
     }
 }
 
-const photos = {!! json_encode($detailData->wisata->pluck('img_wisata')) !!};
+const photos = {!! json_encode($relatedWisata->pluck('img_wisata')) !!};
     let slideNumber = 0;
     let open = false;
 
@@ -214,7 +214,13 @@ const photos = {!! json_encode($detailData->wisata->pluck('img_wisata')) !!};
     } else {
         slideNumber = (slideNumber + 1) % photos.length;
     }
-    document.getElementById('sliderImg').src = photos[slideNumber];
+
+    var baseUrl = "{{ asset('uploads/img') }}";
+    
+    var imageSource = baseUrl + '/' + photos[slideNumber];
+
+
+    document.getElementById('sliderImg').src = imageSource;
     updateSlider();
 }
 

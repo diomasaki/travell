@@ -77,24 +77,6 @@ function formatCurrency($value) {
                 {{ $detailData->kota }}
               </p><button id="edit-submit-btn-kota" style="display: none;">Save Changes</button>
             </div>
-            <div class="deskripsi-paket-wrapper">
-                <form action="{{ route('updatePaketWisataId', ['id' => $detailData->id])}}" method="post">
-                    @csrf
-                    @method('PUT')
-              <h1 class="detail-nama-paket">Masukkan Ke Paket Wisata</h1>
-              @foreach ($paketWisata as $paketWisatas)
-                <div class="check-box-destination">
-                    <div class="menu-item-check">
-                        <label for="pid">{{ $paketWisatas->paket_wisata }}</label>
-                    </div>
-                    <div class="menu-item-check">
-                        <input type="checkbox" id="pid" class="cb" name="paketwisata_id" value="{{ $paketWisatas->id }}">
-                    </div>
-                </div>
-                @endforeach
-                <button type="submit">Submit</button>
-                </form>
-            </div>
           </div>
         </div>
       </div>

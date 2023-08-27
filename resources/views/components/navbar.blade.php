@@ -11,14 +11,14 @@
 @if(auth()->user() && auth()->user()->isAdmin)
     <div class="container-nav">
         <div class="wrapper-nav">
-            <div class="left-nav"><div class="hamburger" onclick="toggleMenu()"><div class="line"></div><div class="line"></div><div class="line"></div></div><ul class="hamburger-container" id="hamburgerContainer"><li class="hamburger">Beranda</li><li class="hamburger">Destinasi</li><li class="hamburger">Buat Trip</li></ul><div class="slogan-desc2">youridealescape.com</div>  <div class="hamburgers" onclick="toggleMenuTablet()"><div class="lines"></div><div class="lines"></div><div class="lines"></div></div><ul class="hamburger-container-tablet" id="hamburgerContainerTablet"><li class="hamburger-tablet">Beranda</li><li class="hamburger-tablet">Destinasi</li><li class="hamburger-tablet">Buat Trip</li></ul></div>
+            <div class="left-nav"><div class="hamburger" onclick="toggleMenu()"><div class="line"></div><div class="line"></div><div class="line"></div></div><ul class="hamburger-container" id="hamburgerContainer"><a href="{{ route('home') }}" style="text-decoration: none; color: white;"><li class="hamburger">Beranda</li></a><a href="{{ route('destinasi') }}" style="text-decoration: none; color: white;"><li class="hamburger">Destinasi</li></a><a href="{{ route('buat-trip') }}" style="text-decoration: none; color: white;"><li class="hamburger">Buat Trip</li></a></ul><div class="slogan-desc2">youridealescape.com</div>  <div class="hamburgers" onclick="toggleMenuTablet()"><div class="lines"></div><div class="lines"></div><div class="lines"></div></div><ul class="hamburger-container-tablet" id="hamburgerContainerTablet"><li class="hamburger-tablet">Beranda</li><li class="hamburger-tablet">Destinasi</li><li class="hamburger-tablet">Buat Trip</li></ul></div>
             <div class="right-nav"><div class="menuItem-nav"><a href="{{ route('home') }}" style="text-decoration: none; color: white;">Beranda</a></div><a href="{{ route('destinasi') }}" style="text-decoration: none; color: white;"><div class="menuItem-nav">Tempat Wisata</div></a> 
             <a href="{{ route('buat-trip') }}" style="text-decoration: none; color: white;">
             <div class="menuItem-nav">
                 Buat Trip
             </div>
             </a>
-            <div class="menuItem-nav-i"><i class="fa fa-user" aria-hidden="true" style="color: white;"></i></div><div class="menuItem-nav"><div class="search-container"><input type="text" class="search"><i class="fa fa-search" aria-hidden="true" style="color: white;"></i></div></div><div class="menuItem-nav-i">
+            <a href="{{ route('profile') }}" style="text-decoration: none; color: white;"><div class="menuItem-nav-i"><i class="fa fa-user" aria-hidden="true" style="color: white;"></i></div></a><div class="menuItem-nav-i">
                 <a href="{{ route('logouts') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
                     <i class="fa fa-sign-out fa-lg" aria-hidden="true" style="color: white;"></i>
                 </a>
@@ -35,7 +35,7 @@
     <div class="wrapper-nav">
         <div class="left-nav"><div class="hamburger" onclick="toggleMenu()"><div class="line"></div><div class="line"></div><div class="line"></div></div><ul class="hamburger-container" id="hamburgerContainer"><li class="hamburger">Beranda</li><li class="hamburger">Destinasi</li><li class="hamburger">Buat Trip</li></ul><div class="slogan-desc2">youridealescape.com</div>  <div class="hamburgers" onclick="toggleMenuTablet()"><div class="lines"></div><div class="lines"></div><div class="lines"></div></div><ul class="hamburger-container-tablet" id="hamburgerContainerTablet"><li class="hamburger-tablet">Beranda</li><li class="hamburger-tablet">Destinasi</li><li class="hamburger-tablet">Buat Trip</li></ul></div>
         <div class="right-nav"><div class="menuItem-nav"><a href="{{ route('home') }}" style="text-decoration: none; color: white;">Beranda</a></div><a href="{{ route('destinasi') }}" style="text-decoration: none; color: white;"><div class="menuItem-nav">Tempat Wisata</div></a> 
-        <a href="{{ route('buat-trip') }}" style="text-decoration: none; color: white;"> <div class="menuItem-nav">Paket Wisata</div></a><div class="menuItem-nav-i"><i class="fa fa-user" aria-hidden="true" style="color: white;"></i></div><div class="menuItem-nav"><div class="search-container"><input type="text" class="search"><i class="fa fa-search" aria-hidden="true" style="color: white;"></i></div></div><div class="menuItem-nav-i">
+        <a href="{{ route('buat-trip') }}" style="text-decoration: none; color: white;"> <div class="menuItem-nav">Paket Wisata</div></a><a href="{{ route('profile') }}" style="text-decoration: none; color: white;"><div class="menuItem-nav-i"><i class="fa fa-user" aria-hidden="true" style="color: white;"></i></div></a><div class="menuItem-nav-i">
             <a href="{{ route('logouts') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
                 <i class="fa fa-sign-out fa-lg" aria-hidden="true" style="color: white;"></i>
             </a>
