@@ -84,3 +84,15 @@ Paket
 
 
             <div class="menuItem-nav"><div class="search-container"><input type="text" class="search"><i class="fa fa-search" aria-hidden="true" style="color: white;"></i></div></div>
+
+
+
+06:00 = Berangkat.
+10:00 = Istirahat.
+12:30 = Makan siang.
+15:00 = Explore tempat wisata.
+18:00 = Kembali ke penginapan.
+20:00 = Makan malam.
+22:00 = Istirahat.
+23:00 = Perjalanan pulang.
+24:00 = Sampai di villa.
