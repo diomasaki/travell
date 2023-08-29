@@ -47,7 +47,7 @@ function formatCurrency($value) {
             {{ $detailData->description }}
           </span><button id="edit-submit-btn-description" style="display: none;">Save Changes</button>
           <span class="harga-paket-wisata-detail">
-          <small><i class="fa fa-pencil" aria-hidden="true" style="margin: 0px 10px;"></i>Harga Tiket Rp.     </small><small id="editable-heading-price" contenteditable>{{ formatCurrency($detailData->price) }}</small><button id="edit-submit-btn-price" style="display: none; margin-top: 15px;">Save Changes</button>
+          <small><i class="fa fa-pencil" aria-hidden="true" style="margin: 0px 10px;"></i>Harga Tiket Rp.     </small><small id="editable-heading-price" contenteditable>{{ $detailData->price }}</small><button id="edit-submit-btn-price" style="display: none; margin-top: 15px;">Save Changes</button>
           </span>
           <div class="fpRating">
           <i class="fa fa-pencil" aria-hidden="true" style="margin: 0px 10px;"></i><button id="editable-heading-ratings" contenteditable>{{ $detailData->ratings }}</button>

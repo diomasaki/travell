@@ -98,9 +98,12 @@ function formatCurrency($value) {
             </div>
             <div class="deskripsi-paket-wrapper">
               <h1 class="detail-nama-paket">Harga</h1>
-              <p class="desc-pkt-wisata" id="editable-heading-harga" contenteditable>
-                 Rp. {{ formatCurrency($detailData->budget) }}
-              </p><button id="edit-submit-btn-harga" style="display: none;">Save Changes</button>
+              <div class="hash-price" style="display: flex; align-items: center;">
+                <p class="desc-pkt-wisata">Rp.  </p>
+                <p class="desc-pkt-wisata" id="editable-heading-harga" contenteditable>
+                      {{ $detailData->budget }}
+                </p><button id="edit-submit-btn-harga" style="display: none;">Save Changes</button>
+              </div>
             </div>
           </div>
         </div>
