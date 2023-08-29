@@ -892,9 +892,10 @@ p.info-footer-item{
 
 
 .popularWisataContainer{
-    height: 60vh;
+    height: 80vh;
     display: flex;
     padding: 20px;
+    margin: 70px 0px;
     align-items: center;
     justify-content: center;
     flex-direction: column;
@@ -1020,6 +1021,10 @@ p.info-footer-item{
 @media only screen and (max-width: 1400px) {  
     .fixedPopularContainer{
         flex-wrap: wrap;
+    }
+
+    .fpCity{
+        display: none;
     }
 
     .form-filter-wisata{
@@ -1288,6 +1293,20 @@ p.info-footer-item{
     border-radius: 5px;
     cursor: pointer;
   }
+
+  .bookNow-kembali {
+    position: absolute;
+    top: 10px;
+    right: 0;
+    border: none;
+    margin: 90px 50px;
+    padding: 10px 20px;
+    background-color: #233D53;
+    color: white;
+    font-weight: bold;
+    border-radius: 5px;
+    cursor: pointer;
+  }
   
   .detail-nama-paket {
     font-size: 24px;
@@ -1330,11 +1349,15 @@ p.info-footer-item{
     cursor: pointer;
   }
 
+  .ssh-alo{
+    height: 100%;
+    width: 100%;
+  }
+
   .paket-wisata-detailImgs {
-    width: 350px;
-    height: 350px;
+    height: 100%;
+    width: 100%;
     object-fit: cover;
-    margin: 2px;
     cursor: pointer;
   }
   
@@ -1674,7 +1697,19 @@ svg{
 }
 
 .create-ff-zz{
-    height: 350%;
+    height: 150vh;
+    width: 90%;
+    top: 40%;
+    padding: 20px;
+    right: 0;
+    left: 0;
+    background-color: white;
+    margin: auto;
+    position: absolute;
+}
+
+.create-ff-zz-destinasi{
+    height: 80vh;
     width: 90%;
     top: 40%;
     padding: 20px;
@@ -1695,6 +1730,7 @@ svg{
 h1.fz-eer{
     font-size: 20px;
     color: black;
+    text-align: center;
 }
 
 h1.fz-sex{
@@ -1703,10 +1739,22 @@ h1.fz-sex{
 }
 
 .check-box-conts{
-    max-height: 50px;
+    height: 350px;
+    width: 100%;
     color: white;
-    max-width: 500px;
-    align-self: center;
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    bottom: -380px;
+}
+
+.borge-xsl{
+    display: flex;
+    align-items: center;
+    width: 90%;
+    flex-wrap: wrap;
 }
 
 
@@ -1736,8 +1784,8 @@ h1.fz-sex{
   }
 
   .gambar-detail-wrapper-ssh {
-    height: 105%;
-    width: 33%;
+    height: 350px;
+    width: 350px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -1747,7 +1795,7 @@ h1.fz-sex{
   .check-box-destination{
     background-color: #003580;
     padding: 20px;
-    margin: 5px;
+    margin: 20px 5px;
     font-size: 14px;
     border-radius: 20px;
     height: 30px;
@@ -1756,12 +1804,6 @@ h1.fz-sex{
     justify-content: center;
 }
 
-.ssh-xd{
-    width: 1280px;
-    text-align: center;
-    margin-bottom: 20px;
-
-}
 
 button.xx-sha{
     background-color: #003580;
@@ -1772,4 +1814,16 @@ button.xx-sha{
     cursor: pointer;
     color: white;
     border-radius: 20px;
+}
+
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
 }

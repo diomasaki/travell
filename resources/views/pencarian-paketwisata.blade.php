@@ -61,20 +61,20 @@ if (!$user) {
                   <span for="budaya" class="lsOptionText">
                      Budaya
                   </span>
-                  <input id="budaya" type="radio" class="lsOptionInput" name="kategori" value="Budaya" />
+                  <input id="budaya" type="checkbox" class="lsOptionInput" name="kategoribudaya" value="Budaya" />
                 </div>
                 <div class="lsOptionItem">
                   <span id="pantai" class="lsOptionText">
                     Pantai
                   </span>
-                  <input for="pantai" type="radio" class="lsOptionInput" name="kategori" value="Pantai"/>
+                  <input for="pantai" type="checkbox" class="lsOptionInput" name="kategoripantai" value="Pantai"/>
                 </div>
                 <div class="lsOptionItem">
                   <span id="religi" class="lsOptionText">Religi</span>
                   <input
                     for="religi"
-                    type="radio"
-                    name="kategori"
+                    type="checkbox"
+                    name="kategorireligi"
                     value="Religi"
                     class="lsOptionInput"
                     placeholder="Dewasa"
@@ -84,9 +84,9 @@ if (!$user) {
                   <span id="alam" class="lsOptionText">Alam</span>
                   <input
                     for="alam"
-                    type="radio"
+                    type="checkbox"
                     value="Alam"
-                    name="kategori"
+                    name="kategorialam"
                     class="lsOptionInput"
                     placeholder="Anak Kecil"
                   />
@@ -95,9 +95,9 @@ if (!$user) {
                   <span id="minat" class="lsOptionText">Minat Khusus</span>
                   <input
                     for="minat"
-                    name="kategori"
-                    type="radio"
-                    value="Minat"
+                    name="kategoriminat"
+                    type="checkbox"
+                    value="Minat Khusus"
                     class="lsOptionInput"
                     placeholder="Kamar"
                   />

@@ -62,7 +62,7 @@ function formatCurrency($value) {
             <div class="deskripsi-paket-wrapper">
                 <div class="fpRating">
                   <h1 class="rator-z-t">Rating</h1>
-                  <button>4.9</button>
+                  <button>{{ $results->ratings }}</button>
                 </div>
               <p class="desc-pkt-wisata">
                 {{ $results->description }}

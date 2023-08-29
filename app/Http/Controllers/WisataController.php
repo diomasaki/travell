@@ -42,8 +42,12 @@ class WisataController extends Controller
 
             $query = DB::table('wisata');
             
+            
             if ($price) {
-                $query->orWhere('price', '=', $price);
+                $query->where(function ($query) use ($price) {
+                    $query->where('price', $price)
+                          ->orWhere('price', '<=', $price);
+                });
             }
     
             if ($kota) {

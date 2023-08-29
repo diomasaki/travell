@@ -40,6 +40,7 @@ function formatCurrency($value) {
                   <img src="{{ $detailData->img_wisata }}" id="sliderImg" alt="" class="sliderImgWisata"/>
               </div>
           </div>
+        <a href="{{ url()->previous() }}" style="text-decoration: none; color: white;"> <button class="bookNow-kembali">Kembali</button></a>
         <div class="detail-wisata-info">
           <h1 class="detail-nama-paket" id="editable-heading-name" contenteditable><i class="fa fa-pencil" aria-hidden="true" style="margin: 0px 10px;"></i>{{$detailData->name}}</h1><button id="edit-submit-btn-name" style="display: none;">Save Changes</button>
           <span class="jarak-paket-wisata" id="editable-heading-description" contenteditable><i class="fa fa-pencil" aria-hidden="true" style="margin: 0px 10px;"></i>

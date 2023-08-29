@@ -35,7 +35,11 @@ class PaketWisataController extends Controller
         try{
             $durasi = $request->durasi;
             $jumlahorang = $request->jumlah_orang;
-            $kategoriWisata = $request->input('kategori');
+            $kategoriWisataBudaya = $request->input('kategoribudaya');
+            $kategoriWisataPantai = $request->input('kategoripantai');
+            $kategoriWisataReligi = $request->input('kategorireligi');
+            $kategoriWisataAlam = $request->input('kategorialam');
+            $kategoriWisataMinat = $request->input('kategoriminat');
             $estimasiBudget = $request->input('budget');
             $kotaWisata = $request->input('kota');
             $kotaOptions = DB::table('paketwisata')->distinct('kota')->pluck('kota');
@@ -46,12 +50,29 @@ class PaketWisataController extends Controller
 
            $query = DB::table('paketwisata');
 
-        if ($kategoriWisata) {
-            $query->orWhere('kategori', '=', $kategoriWisata);
+        if ($kategoriWisataMinat) {
+            $query->orWhere('kategori', '=', $kategoriWisataMinat);
+        }
+        if ($kategoriWisataPantai) {
+            $query->orWhere('kategori', '=', $kategoriWisataPantai);
+        }
+        if ($kategoriWisataReligi) {
+            $query->orWhere('kategori', '=', $kategoriWisataReligi);
+        }
+
+        if ($kategoriWisataBudaya) {
+            $query->orWhere('kategori', '=', $kategoriWisataBudaya);
+        }
+
+        if ($kategoriWisataAlam) {
+            $query->orWhere('kategori', '=', $kategoriWisataAlam);
         }
 
         if ($estimasiBudget) {
-            $query->orWhere('budget', '=', $estimasiBudget);
+            $query->where(function ($query) use ($estimasiBudget) {
+                $query->where('budget', $estimasiBudget)
+                      ->orWhere('budget', '<=', $estimasiBudget);
+            });
         }
 
         if ($kotaWisata) {
@@ -79,7 +100,11 @@ class PaketWisataController extends Controller
             $jumlahorang = $request->jumlah_orang;
             $kota = $request->input('kota');
             $estimasibudget = $request->input('estimasibudget');
-            $kategori = $request->input('kategori');
+            $kategoriWisataBudaya = $request->input('kategoribudaya');
+            $kategoriWisataPantai = $request->input('kategoripantai');
+            $kategoriWisataReligi = $request->input('kategorireligi');
+            $kategoriWisataAlam = $request->input('kategorialam');
+            $kategoriWisataMinat = $request->input('kategoriminat');
             $kotaOptions = DB::table('paketwisata')->distinct('kota')->pluck('kota');
 
 
@@ -88,13 +113,30 @@ class PaketWisataController extends Controller
 
             $query = DB::table('paketwisata');
 
-                if ($kategori) {
-                    $query->orWhere('kategori', '=', $kategori);
-                }
+            if ($kategoriWisataMinat) {
+                $query->orWhere('kategori', '=', $kategoriWisataMinat);
+            }
+            if ($kategoriWisataPantai) {
+                $query->orWhere('kategori', '=', $kategoriWisataPantai);
+            }
+            if ($kategoriWisataReligi) {
+                $query->orWhere('kategori', '=', $kategoriWisataReligi);
+            }
+    
+            if ($kategoriWisataBudaya) {
+                $query->orWhere('kategori', '=', $kategoriWisataBudaya);
+            }
+    
+            if ($kategoriWisataAlam) {
+                $query->orWhere('kategori', '=', $kategoriWisataAlam);
+            }
 
-                if ($estimasibudget) {
-                    $query->orWhere('budget', '=', $estimasibudget);
-                }
+            if ($estimasibudget) {
+                $query->where(function ($query) use ($estimasibudget) {
+                    $query->where('budget', $estimasibudget)
+                          ->orWhere('budget', '<=', $estimasibudget);
+                });
+            }
 
                 if ($kota) {
                     $query->orWhere('kota', '=', $kota);

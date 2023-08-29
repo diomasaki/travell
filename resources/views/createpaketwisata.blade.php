@@ -24,10 +24,11 @@ if (!$user || ($user && !$users->isAdmin)) {
 <body>
     @include('components.navbar')
     @auth
-<div style="background-color: rgb(167, 167, 167); height: 130vh;">
+<div style="background-color: rgb(167, 167, 167); height: 180vh;">
         <div class="container-xvh">
             <div class="create-ff-zz">
                 <div class="wrapper-ff-zz">
+                    <a href="{{ url()->previous() }}" style="text-decoration: none; color: white;"> <button class="bookNow-kembali">Kembali</button></a>
                     <div class="detail-wisata-infos">
                        <div class="gambar-detail-macam-paket-ssh"> 
                             <form action="{{  route('paketwisata.create')  }}" method="POST" enctype="multipart/form-data" class="xd-xt">
@@ -40,23 +41,7 @@ if (!$user || ($user && !$users->isAdmin)) {
                                     class="paket-wisata-detailImgs"
                                     />
                                 </div>
-                                <div class="check-box-conts">
-                                    <div class="ssh-xd">
-                                        <h1 class="fz-eer">Pilih Wisata</h1>
-                                    </div>
-                                    <div class="borge-xsl" style="display: flex;">
-                                    @foreach ($wisata as $wisatas)
-                                    <div class="check-box-destination">
-                                        <div class="menu-item-check">
-                                            <label for="pid{{ $loop->iteration }}">{{ $wisatas->name }}</label>
-                                        </div>
-                                        <div class="menu-item-checks">
-                                            <input type="checkbox" id="pid{{ $loop->iteration }}" class="cb" name="slot{{ $loop->iteration }}" value="{{ $wisatas->name }}">
-                                        </div>
-                                    </div>
-                                    @endforeach
-                                    </div>
-                                </div>
+                               
                             </div>
                             <div class="container-xprice-ssh">
                                 <div class="input-container-fp">
@@ -73,7 +58,14 @@ if (!$user || ($user && !$users->isAdmin)) {
                                 </div>
                                 <div class="input-container-fp">
                                     <label for="kategori" class="fp">Kategori</label>
-                                    <input type="text" id="kategori" name="kategori" class="fpass">
+                                    <select name="kategori" id="kategori" style="padding: 10px; margin-top: 10px;">
+                                        <option disabled selected>Pilih</option>
+                                        <option value="Budaya">Budaya</option>
+                                        <option value="Alam">Alam</option>
+                                        <option value="Pantai">Pantai</option>
+                                        <option value="Religi">Religi</option>
+                                        <option value="Minat Khusus">Minat Khusus</option>
+                                    </select>
                                 </div>
                                 <div class="input-container-fp">
                                     <label for="img_paketwisata" class="fp">Gambar</label>
@@ -96,6 +88,23 @@ if (!$user || ($user && !$users->isAdmin)) {
                                 </div>
                             </div>
                             </form>
+                            <div class="check-box-conts">
+                                    <div class="ssh-xd">
+                                        <h1 class="fz-eer">Pilih Wisata</h1>
+                                    </div>
+                                    <div class="borge-xsl">
+                                    @foreach ($wisata as $wisatas)
+                                    <div class="check-box-destination">
+                                        <div class="menu-item-check">
+                                            <label for="pid{{ $loop->iteration }}">{{ $wisatas->name }}</label>
+                                        </div>
+                                        <div class="menu-item-checks">
+                                            <input type="checkbox" id="pid{{ $loop->iteration }}" class="cb" name="slot{{ $loop->iteration }}" value="{{ $wisatas->name }}">
+                                        </div>
+                                    </div>
+                                    @endforeach
+                                    </div>
+                            </div>
                         </div>
                     </div>
                 </div>

@@ -55,20 +55,24 @@
             <div class="filter-items-wisata-kategori">
                 <p class="filter-text">Pilih Kategori Wisata</p>
                     <div class="input-kategori-wisata">
-                        <input type="radio" name="kategori" id="kategori-budaya"  value="Budaya" class="wisata-li">
+                        <input type="checkbox" name="kategoribudaya" id="kategori-budaya"  value="Budaya" class="wisata-li">
                         <label for="kategori-budaya">Budaya</label>
                     </div>
                     <div class="input-kategori-wisata">
-                        <input type="radio" name="kategori" id="kategori-pantai" value="Pantai" class="wisata-li">
+                        <input type="checkbox" name="kategoripantai" id="kategori-pantai" value="Pantai" class="wisata-li">
                         <label for="kategori-pantai">Pantai</label>
                     </div>
                     <div class="input-kategori-wisata">
-                        <input type="radio" name="kategori" id="kategori-religi" value="Religi" class="wisata-li">
+                        <input type="checkbox" name="kategorireligi" id="kategori-religi" value="Religi" class="wisata-li">
                         <label for="kategori-religi">Religi</label>
                     </div>
                     <div class="input-kategori-wisata">
-                        <input type="radio" name="kategori" id="kategori-alam" value="Alam" class="wisata-li">
+                        <input type="checkbox" name="kategorialam" id="kategori-alam" value="Alam" class="wisata-li">
                         <label for="kategori-alam">Alam</label>
+                    </div>
+                    <div class="input-kategori-wisata">
+                        <input type="checkbox" name="kategoriminat" id="kategori-minatkhusus" value="Minat Khusus" class="wisata-li">
+                        <label for="kategori-minatkhusus">Minat Khusus</label>
                     </div>
                     <div class="tttt">
                         <button type="submit" name="submit" class="lihat-hasil">Lihat Hasil</button>

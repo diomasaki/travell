@@ -46,7 +46,8 @@ function formatCurrency($value) {
               <i class="fa fa-arrow-right" style="top: 50%; right: 20px; position: absolute; font-size: 50px; color: lightgray; cursor: pointer; transform: translateY(-50%);" onclick="handleMove('r')"></i>
           </div>
         <div class="detail-wisata-info">
-        <a href="{{ route('itenary', ['id' => $detailData->id])}}" style="text-decoration: none; color: white;"> <button class="bookNow">Lihat Kumpulan Wisata</button></a>
+        <a href="{{ route('itenary', ['id' => $detailData->id])}}" style="text-decoration: none; color: white;"> <button class="bookNow">Lihat Kumpulan Wisata</button></a> 
+        <a href="/paketwisata" style="text-decoration: none; color: white;"> <button class="bookNow-kembali">Kembali</button></a>
           <h1 class="detail-nama-paket">{{$detailData->paket_wisata}}</h1>
           <div class="detail-alamat-paket">
           @foreach ($relatedWisata as $index => $detailWisataInformation)
@@ -76,6 +77,7 @@ function formatCurrency($value) {
           </div>
           <div class="deskripsi-paket-container">
             <div class="deskripsi-paket-wrapper">
+              <button style="background-color: #003580; color: white; border: none; padding: 4px;">{{ $detailData-> ratings }}</button>
               <h1 class="detail-nama-paket">List Wisata {{ $detailData->paket_wisata }}</h1>
               <p class="desc-pkt-wisata">
               <?php $count = 1?>

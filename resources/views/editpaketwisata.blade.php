@@ -37,9 +37,10 @@ function formatCurrency($value) {
           <div id="sliders" class="slider-detail-wisata" style="display: none;">
               <i class="fa fa-close" style="top: 20px; right: 20px; position: absolute; font-size: 30px; color: lightgray; cursor: pointer;" onclick="closeSlider()"></i>
               <div class="sliderWrapperDetailWisata">
-                  <img src="{{ $detailData->img_paketwisata }}" id="sliderImg" alt="" class="sliderImgWisata"/>
+                  <img src="{{ asset('uploads/img/' . $detailData->img_paketwisata) }}" id="sliderImg" alt="" class="sliderImgWisata"/>
               </div>
           </div>
+        <a href="{{ url()->previous() }}" style="text-decoration: none; color: white;"> <button class="bookNow-kembali">Kembali</button></a>
         <div class="detail-wisata-info">
           <h1 class="detail-nama-paket" id="editable-heading-paket" contenteditable><i class="fa fa-pencil" aria-hidden="true" style="margin: 0px 10px;"></i>{{$detailData->paket_wisata}}</h1><button id="edit-submit-btn-paket" style="display: none;">Save Changes</button>
           <span class="jarak-paket-wisata" id="editable-heading-kota" contenteditable><i class="fa fa-pencil" aria-hidden="true" style="margin: 0px 10px;"></i>
@@ -411,7 +412,7 @@ function toogleMenu() {
     }
 }
 
-const photos = {!! json_encode($detailData->wisata->pluck('img_wisata')) !!};
+const photos = {!! json_encode($detailData->wisata->pluck('img_paketwisata')) !!};
     let slideNumber = 0;
     let open = false;
 

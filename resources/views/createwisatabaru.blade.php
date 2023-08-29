@@ -26,8 +26,9 @@ if (!$user || ($user && !$users->isAdmin)) {
     @auth
 <div style="background-color: rgb(167, 167, 167); height: 130vh;">
         <div class="container-xvh">
-            <div class="create-ff-zz">
+            <div class="create-ff-zz-destinasi">
                 <div class="wrapper-ff-zz">
+                <a href="{{ url()->previous() }}" style="text-decoration: none; color: white;"> <button class="bookNow-kembali">Kembali</button></a>
                     <div class="detail-wisata-infos">
                        <div class="gambar-detail-macam-paket-ssh"> 
                             <form action="{{ route('wisata.create') }}" method="POST" enctype="multipart/form-data" class="xd-xt">

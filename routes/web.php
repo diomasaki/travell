@@ -66,7 +66,9 @@ Route::controller(GoogleController::class)->group(function() {
 //PAKET WISATA
 Route::get("/trip", [PaketWisataController::class, 'indexOfTrip'])->name('buat-trip');
 Route::post('/paketwisata', [PaketWisataController::class, 'getPaketWisataFilterPertama'])->name('pencarian-paketwisata'); 
+Route::get('/paketwisata', [PaketWisataController::class, 'getPaketWisataFilterPertama'])->name('pencarian-paketwisata'); 
 Route::post('/paketwisata/filter', [PaketWisataController::class, 'getPaketWisataFilterKedua'])->name('pencarian-paketwisata-filter'); 
+Route::get('/paketwisata/filter', [PaketWisataController::class, 'getPaketWisataFilterKedua'])->name('pencarian-paketwisata-filter'); 
 Route::get('/paketwisata/detail/{id}', [PaketWisataController::class, 'getById'])->name('detail');
 Route::get('/paketwisata/itenary/{id}', [PaketWisataController::class, 'getAllItenarys'])->name('itenary');
 Route::get('/paketwisata/itenary/details/{id}', [PaketWisataController::class, 'getItenarysById'])->name('indexofwisata');

@@ -11,6 +11,9 @@ if (!$user) {
 }
 ?>
 
+<?php
+$id = request('id');?>
+
 
 <html lang="en">
 <head>
@@ -30,6 +33,7 @@ if (!$user) {
       <div class="listContainer">
         <div class="listWrapper">
           <div class="listResult">
+            <a href="/paketwisata/detail/{{ $id }}" style="text-decoration: none; color: white;"> <button class="bookNow-kembali">Kembali</button></a>
             @include('components/paketwisata')
           </div>
         </div>
