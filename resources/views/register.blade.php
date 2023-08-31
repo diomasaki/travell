@@ -37,7 +37,8 @@ if ($user) {
                     <form action="/register/proses" method="POST" class="lf">
                         @csrf
                         <div class="form-input">
-                            <input for="name" name="name" type="text" class="login-input" placeholder="Username">
+                            <input for="name" name="name" type="text" class="login-input" placeholder="Username" pattern="^[A-Za-z0-9]{5,22}$">
+                            <span class="errors">username must be more than 5 characters and less than 22 characters</span>
                         </div>
                         <div class="form-input">
                             <input for="password" name="password" type="password" class="login-input" placeholder="Password">

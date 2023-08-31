@@ -31,7 +31,7 @@ if (!$user) {
         <div class="listWrapper">
           <div class="listSearch">
             <h1 class="lsTitle">Form Pencarian</h1>
-          <form action="{{ route('pencarian-paketwisata-filter') }}" method="POST" class="pencarian-paketwisata-filter">
+          <form action="{{ route('pencarian-paketwisata-filter') }}" method="POST" class="pencarian-paketwisata-filter" id="myForm">
             @csrf
             <div class="lsItem">
               <label>Durasi Liburan</label>
@@ -102,6 +102,8 @@ if (!$user) {
                     placeholder="Kamar"
                   />
                 </div>
+                 <!-- Hidden input field for combined categories -->
+                 <input type="hidden" name="combinedCategories" id="combinedCategoriesInput">
               </div>
             </div>
             <button>Search</button>
@@ -118,3 +120,26 @@ if (!$user) {
 @endauth
 </body>
 </html>
+
+<script>
+    const checkboxes = document.querySelectorAll('.lsOptionInput');
+    const form = document.getElementById('myForm');
+
+    form.addEventListener('submit', event => {
+        const selectedCheckboxes = [];
+        checkboxes.forEach(checkbox => {
+            if (checkbox.checked) {
+                selectedCheckboxes.push(checkbox.value);
+            }
+        });
+
+        const combinedValues = selectedCheckboxes.join(', ');
+
+        // Set the value of the hidden input field to the combinedValues
+        const combinedCategoriesInput = document.getElementById('combinedCategoriesInput');
+        combinedCategoriesInput.value = combinedValues;
+
+        // Submit the form
+        form.submit();
+    });
+</script>

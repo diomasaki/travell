@@ -16,7 +16,7 @@
     <div class="form-filter-wisata">
         <h2 class="form-filter-title">Tentukan Opsi Liburan Sesuai Keinginanmu</h2>
         <div class="filters">
-        <form action="{{ route('pencarian-paketwisata') }}" method="POST" class="filters">
+        <form action="{{ route('pencarian-paketwisata') }}" method="POST" class="filters" id="myForm">
             @csrf
             <div class="filter-items">
                 <i class="fa fa-clock-o" aria-hidden="true"></i>
@@ -74,6 +74,7 @@
                         <input type="checkbox" name="kategoriminat" id="kategori-minatkhusus" value="Minat Khusus" class="wisata-li">
                         <label for="kategori-minatkhusus">Minat Khusus</label>
                     </div>
+                    <input type="hidden" name="combinedCategories" id="combinedCategoriesInput">
                     <div class="tttt">
                         <button type="submit" name="submit" class="lihat-hasil">Lihat Hasil</button>
                     </div>
@@ -86,3 +87,27 @@
 </div>
 </body>
 </html>
+
+
+<script>
+    const checkboxes = document.querySelectorAll('.wisata-li');
+    const form = document.getElementById('myForm');
+
+    form.addEventListener('submit', event => {
+        const selectedCheckboxes = [];
+        checkboxes.forEach(checkbox => {
+            if (checkbox.checked) {
+                selectedCheckboxes.push(checkbox.value);
+            }
+        });
+
+        const combinedValues = selectedCheckboxes.join(', ');
+
+        // Set the value of the hidden input field to the combinedValues
+        const combinedCategoriesInput = document.getElementById('combinedCategoriesInput');
+        combinedCategoriesInput.value = combinedValues;
+
+        // Submit the form
+        form.submit();
+    });
+</script>

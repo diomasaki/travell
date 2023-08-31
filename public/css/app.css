@@ -103,6 +103,16 @@ input.login-input{
     outline: none;
 }
 
+span.errors{
+    display: none;
+    color: red;
+    font-size: 12px;
+}
+
+input.login-input:invalid ~ span.errors{
+    display: block;
+}
+
 button.login-submit{
     width: 70%;
     margin-top: 30px;
@@ -1747,7 +1757,7 @@ h1.fz-sex{
     justify-content: center;
     flex-direction: column;
     align-items: center;
-    bottom: -380px;
+    bottom: -500px;
 }
 
 .borge-xsl{

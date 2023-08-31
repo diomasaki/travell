@@ -40,6 +40,7 @@ class PaketWisataController extends Controller
             $kategoriWisataReligi = $request->input('kategorireligi');
             $kategoriWisataAlam = $request->input('kategorialam');
             $kategoriWisataMinat = $request->input('kategoriminat');
+            $combinedCategories = $request->input('combinedCategories');
             $estimasiBudget = $request->input('budget');
             $kotaWisata = $request->input('kota');
             $kotaOptions = DB::table('paketwisata')->distinct('kota')->pluck('kota');
@@ -66,6 +67,10 @@ class PaketWisataController extends Controller
 
         if ($kategoriWisataAlam) {
             $query->orWhere('kategori', '=', $kategoriWisataAlam);
+        }
+        
+        if ($combinedCategories) {
+            $query->orWhere('kategori', '=', $combinedCategories);
         }
 
         if ($estimasiBudget) {
@@ -105,6 +110,7 @@ class PaketWisataController extends Controller
             $kategoriWisataReligi = $request->input('kategorireligi');
             $kategoriWisataAlam = $request->input('kategorialam');
             $kategoriWisataMinat = $request->input('kategoriminat');
+            $combinedCategories = $request->input('combinedCategories');
             $kotaOptions = DB::table('paketwisata')->distinct('kota')->pluck('kota');
 
 
@@ -129,6 +135,10 @@ class PaketWisataController extends Controller
     
             if ($kategoriWisataAlam) {
                 $query->orWhere('kategori', '=', $kategoriWisataAlam);
+            }
+    
+            if ($combinedCategories) {
+                $query->orWhere('kategori', '=', $combinedCategories);
             }
 
             if ($estimasibudget) {

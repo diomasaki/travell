@@ -3,7 +3,7 @@
 @if ($errors->any())
     <div {{ $attributes }}>
         <div class="font-medium text-red-600">
-            {{ __('Something went wrong.') }}
+            {{ __('Kesalahan terjadi.') }}
         </div>
 
             @foreach ($errors->all() as $error)

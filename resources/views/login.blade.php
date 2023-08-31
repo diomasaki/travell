@@ -35,6 +35,8 @@ if ($user) {
                 <img src="https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcQlWJo9qjdNdIz3q-HgX6hnlRgzkisSDbsfPImky3cH6JDE3W_z" class="login-icon">
                 <div class="form">
                     <div class="login-title">Masuk</div>
+                    <!-- Validation Errors -->
+            <x-auth-validation-errors class="error" :errors="$errors" />
                     <form action="/login/proses" method="POST" class="lf">
                         @csrf
                         <div class="form-input">

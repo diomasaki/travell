@@ -31,7 +31,7 @@ if (!$user || ($user && !$users->isAdmin)) {
                     <a href="{{ url()->previous() }}" style="text-decoration: none; color: white;"> <button class="bookNow-kembali">Kembali</button></a>
                     <div class="detail-wisata-infos">
                        <div class="gambar-detail-macam-paket-ssh"> 
-                            <form action="{{  route('paketwisata.create')  }}" method="POST" enctype="multipart/form-data" class="xd-xt">
+                            <form action="{{  route('paketwisata.create')  }}" method="POST" enctype="multipart/form-data" class="xd-xt" id="myForm">
                             @csrf
                             <div class="gambar-detail-wrapper-ssh">
                                 <div class="ssh-alo">
@@ -58,14 +58,28 @@ if (!$user || ($user && !$users->isAdmin)) {
                                 </div>
                                 <div class="input-container-fp">
                                     <label for="kategori" class="fp">Kategori</label>
-                                    <select name="kategori" id="kategori" style="padding: 10px; margin-top: 10px;">
-                                        <option disabled selected>Pilih</option>
-                                        <option value="Budaya">Budaya</option>
-                                        <option value="Alam">Alam</option>
-                                        <option value="Pantai">Pantai</option>
-                                        <option value="Religi">Religi</option>
-                                        <option value="Minat Khusus">Minat Khusus</option>
-                                    </select>
+                                    <div class="input-kategori-wisata">
+                                        <input type="checkbox" id="kategori-budaya"  value="Budaya" class="wisata-li">
+                                        <label for="kategori-budaya">Budaya</label>
+                                    </div>
+                                    <div class="input-kategori-wisata">
+                                        <input type="checkbox" id="kategori-pantai" value="Pantai" class="wisata-li">
+                                        <label for="kategori-pantai">Pantai</label>
+                                    </div>
+                                    <div class="input-kategori-wisata">
+                                        <input type="checkbox" id="kategori-religi" value="Religi" class="wisata-li">
+                                        <label for="kategori-religi">Religi</label>
+                                    </div>
+                                    <div class="input-kategori-wisata">
+                                        <input type="checkbox" id="kategori-alam" value="Alam" class="wisata-li">
+                                        <label for="kategori-alam">Alam</label>
+                                    </div>
+                                    <div class="input-kategori-wisata">
+                                        <input type="checkbox" id="kategori-minatkhusus" value="Minat Khusus" class="wisata-li">
+                                        <label for="kategori-minatkhusus">Minat Khusus</label>
+                                    </div>
+                                        <!-- Hidden input field for combined categories -->
+                                        <input type="hidden" name="kategori" id="combinedCategoriesInput">
                                 </div>
                                 <div class="input-container-fp">
                                     <label for="img_paketwisata" class="fp">Gambar</label>
@@ -87,7 +101,6 @@ if (!$user || ($user && !$users->isAdmin)) {
                                     <button type="submit" class="xx-sha">Submit</button>
                                 </div>
                             </div>
-                            </form>
                             <div class="check-box-conts">
                                     <div class="ssh-xd">
                                         <h1 class="fz-eer">Pilih Wisata</h1>
@@ -105,6 +118,7 @@ if (!$user || ($user && !$users->isAdmin)) {
                                     @endforeach
                                     </div>
                             </div>
+                            </form>
                         </div>
                     </div>
                 </div>
@@ -116,3 +130,27 @@ if (!$user || ($user && !$users->isAdmin)) {
 @endauth
 </body>
 </html>
+
+
+<script>
+    const checkboxes = document.querySelectorAll('.wisata-li');
+    const form = document.getElementById('myForm');
+
+    form.addEventListener('submit', event => {
+        const selectedCheckboxes = [];
+        checkboxes.forEach(checkbox => {
+            if (checkbox.checked) {
+                selectedCheckboxes.push(checkbox.value);
+            }
+        });
+
+        const combinedValues = selectedCheckboxes.join(', ');
+
+        // Set the value of the hidden input field to the combinedValues
+        const combinedCategoriesInput = document.getElementById('combinedCategoriesInput');
+        combinedCategoriesInput.value = combinedValues;
+
+        // Submit the form
+        form.submit();
+    });
+</script>
