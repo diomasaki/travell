@@ -85,7 +85,7 @@ Route::get('/paketwisata/{id}/delete', [PaketWisataController::class, 'deletePak
 
 //XENDIT
 Route::get('/payment/success/invoice_id', [PaymentController::class, 'index'])->name('payment.success');
-Route::post('/payment/create', [PaymentController::class, 'create'])->name('xendit');
+Route::post('/payment/create', [PaymentController::class, 'createNewPayment'])->name('xendit');
 
 
 

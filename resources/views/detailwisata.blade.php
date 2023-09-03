@@ -134,28 +134,12 @@ function formatCurrency($value) {
                   <b>Rp.{{ formatCurrency($detailData->budget) }}</b>
               @endif
               </h2>
-              <form id="hiddenForm" action="{{ route('xendit') }}" method="POST" style="display: none;">
-                  @csrf
-                  @if(Auth::check())
-                    <?php $userEmail = Auth::user()->email; ?>
-                    <input type="hidden" name="payer_email" value="{{ $userEmail }}">
-                    <input type="hidden" name="description" value="Pembayaran Tiket {{ $detailData->paket_wisata }}">
-                    @if ($jumlahorang > 0 && $durasi > 0)
-                    <input type="hidden" name="amount" value="{{ ($detailData->budget * $jumlahorang * $durasi) }}">
-                    @elseif ($jumlahorang > 0)
-                    <input type="hidden" name="amount" value="{{ ($detailData->budget * $jumlahorang) }}">
-                    @elseif ($durasi > 0)
-                    <input type="hidden" name="amount" value="{{ ($detailData->budget * $durasi) }}">
-                    @else
-                      <input type="hidden" name="amount" value="{{ ($detailData->budget) }}">
-                    @endif
-                  @endif
-                </form>
-                <button id="submitButton" type="submit" name="submit">Pesan Tiket Sekarang!</button>
+                <button id="submitButton-Form">Pesan Tiket Sekarang!</button>
             </div>
           </div>
         </div>
       </div>
+      @include('components/reserve')
     </div>
     @include('components.footer')
     @endauth
@@ -164,10 +148,14 @@ function formatCurrency($value) {
 
 
 <script>
-    document.getElementById('submitButton').addEventListener('click', function() {
-        document.getElementById('hiddenForm').submit();
-    });
+  const modal = document.querySelector(".reserve")
+  const submitForm = document.getElementById('submitButton-Form');
+  submitForm.addEventListener("click", () => {
+    modal.style.display = 'block';
+    modal.style.display = 'flex';
+  })
 </script>
+
 
 
 

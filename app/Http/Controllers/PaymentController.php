@@ -62,4 +62,38 @@ class PaymentController extends Controller
 
         return response()->json(['data' => 'Success']);
     }
+
+
+
+
+    //NEW PAY METHOD
+    public function createNewPayment(Request $request) {
+        $totalharga = $request->totalharga * $request->jumlah_orang;
+
+        $params = [
+            'external_id' => (string) Str::uuid(),
+            'payer_email' => $request->payer_email,
+            'description' => $request->description,
+            'amount' => $totalharga,
+            'success_redirect_url' => route('payment.success'),
+        ];
+
+        $createInvoice = \Xendit\Invoice::create($params);
+
+        $invoiceId = $createInvoice['id'];
+
+            // Store the invoice ID in a session variable
+        session()->put('invoice_id', $invoiceId);
+        
+
+        //DB SAVE
+        $payment = new Payment;
+        $payment->status = 'pending';
+        $payment->checkout_link = $createInvoice['invoice_url'];
+        $payment->external_id = $params['external_id'];
+        $payment->save();
+
+        return redirect($createInvoice['invoice_url']);
+    }
+
 }
