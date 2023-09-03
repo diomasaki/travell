@@ -109,30 +109,16 @@ function formatCurrency($value) {
               </p>
             </div>
             <div class="harga-detail-pkt-wisata">
+              @if ($detailData->durasi > 0)
+              <small></small>
+              @else
               <small>Mulai dari 1 hari </br><b> Rp. {{ formatCurrency($detailData->budget) }} / pax</b></small>
-              <small>Jumlah Orang </n> @if ($jumlahorang > 0)
-                  <b>{{ ($jumlahorang) }} pax</b>
-              @else
-                  <b>1</b>
-              @endif</small>
-              <small>Jumlah Durasi </n> @if ($durasi > 0)
-                  <b>{{ ($durasi) }} hari</b>
-              @else
-                  <b>1 hari</b> 
-              @endif</small>
+              @endif
               <span>
                 Total Harga Untuk </br><span style="font-weight: 700;">{{ $detailData->paket_wisata }}</span>
               </span>
               <h2>
-              @if ($jumlahorang > 0 && $durasi > 0)
-                  <b>Rp.{{ formatCurrency($detailData->budget * $jumlahorang * $durasi) }}</b>
-              @elseif ($jumlahorang > 0)
-                  <b>Rp.{{ formatCurrency($detailData->budget * $jumlahorang) }}</b>    
-              @elseif ($durasi > 0)
-                  <b>Rp.{{ formatCurrency($detailData->budget * $durasi) }}</b>    
-              @else
                   <b>Rp.{{ formatCurrency($detailData->budget) }}</b>
-              @endif
               </h2>
                 <button id="submitButton-Form">Pesan Tiket Sekarang!</button>
             </div>

@@ -33,6 +33,7 @@ class PaketWisata extends Model
         'keterangan',
         'ratings',
         'itinerary',
+        'durasi',
         'slot1',
         'slot2',
         'slot3',

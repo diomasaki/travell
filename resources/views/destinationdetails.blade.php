@@ -70,20 +70,11 @@ function formatCurrency($value) {
             </div>
             <div class="harga-detail-pkt-wisata">
             <small>Mulai dari</br><b> Rp. {{ formatCurrency($results->price) }} / pax</b></small>
-            <h1>Jumlah Orang </n> @if ($jumlahorang > 0)
-                  <b>{{ ($jumlahorang) }}</b>
-              @else
-                  <b>1</b>
-              @endif</h1>
               <span>
                 Total Harga Untuk </br><span style="font-weight: 700;">{{ $results->name }}</span>
               </span>
               <h2>
-              @if ($jumlahorang > 0)
-              <b>Rp. {{ formatCurrency($results->price * $jumlahorang) }}</b>
-              @else
               <b>Rp. {{ formatCurrency($results->price) }}</b>
-              @endif
               </h2>
               <form id="hiddenForm" action="{{ route('xendit') }}" method="POST" style="display: none;">
               @csrf
@@ -98,16 +89,27 @@ function formatCurrency($value) {
               @endif
               @endif
               </form>
-              <button id="submitButton" type="submit" name="submit">Pesan Tiket Sekarang!</button>
+              <button id="submitButton-Form" type="submit" name="submit">Pesan Tiket Sekarang!</button>
               </div>
           </div>
         </div>
       </div>
+      @include('components/reservewisata')
     </div>
     @include('components.footer')
     @endauth
 </body>
 </html>
+
+<script>
+  const modal = document.querySelector(".reserve")
+  const submitForm = document.getElementById('submitButton-Form');
+  submitForm.addEventListener("click", () => {
+    modal.style.display = 'block';
+    modal.style.display = 'flex';
+  })
+</script>
+
 
 
 <script>

@@ -19,13 +19,6 @@
         <form action="{{ route('pencarian-paketwisata') }}" method="POST" class="filters" id="myForm">
             @csrf
             <div class="filter-items">
-                <i class="fa fa-clock-o" aria-hidden="true"></i>
-                <p class="filter-text">Durasi Liburan</p>
-                <div class="hari-filter">
-                    <input class="hari" name="durasi" type="text">Hari
-                </div>
-            </div>
-            <div class="filter-items">
                 <i class="fa fa-building-o" aria-hidden="true"></i>
                 <p class="filter-text">Kabupaten/Kota</p>
                 <select name="kota" id="kota" class="kabupaten">
@@ -34,13 +27,6 @@
                     <option value="{{ $kotaOption }}">{{ $kotaOption }}</option>
                 @endforeach
                 </select>
-            </div>
-            <div class="filter-items">
-                <i class="fa fa-users" aria-hidden="true"></i>
-                <p class="filter-text">Jumlah Orang</p>
-                <div class="hari-filter">
-                    <input class="hari" name="jumlah_orang" default="1" type="text">Orang
-                </div>
             </div>
             <div class="filter-items">
                 <i class="fa fa-money" aria-hidden="true"></i>

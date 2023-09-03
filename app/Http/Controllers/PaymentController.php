@@ -70,13 +70,28 @@ class PaymentController extends Controller
     public function createNewPayment(Request $request) {
         $totalharga = $request->totalharga * $request->jumlah_orang;
 
-        $params = [
-            'external_id' => (string) Str::uuid(),
-            'payer_email' => $request->payer_email,
-            'description' => $request->description,
-            'amount' => $totalharga,
-            'success_redirect_url' => route('payment.success'),
-        ];
+        $budgetforall = $request->totalhargaforall;
+        $jumlah_hari = $request->jumlahh_hari;
+        $orang = $request->jumlah_orang;
+        $totalhargaforallneeds = $budgetforall * $jumlah_hari * $orang;
+
+        if ($budgetforall > 0) {
+            $params = [
+                'external_id' => (string) Str::uuid(),
+                'payer_email' => $request->payer_email,
+                'description' => $request->description,
+                'amount' => $totalhargaforallneeds,
+                'success_redirect_url' => route('payment.success'),
+            ];
+        }else {
+            $params = [
+                'external_id' => (string) Str::uuid(),
+                'payer_email' => $request->payer_email,
+                'description' => $request->description,
+                'amount' => $totalharga,
+                'success_redirect_url' => route('payment.success'),
+            ];
+        }
 
         $createInvoice = \Xendit\Invoice::create($params);
 

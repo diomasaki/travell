@@ -94,6 +94,10 @@ if (!$user || ($user && !$users->isAdmin)) {
                                     <input type="text" id="ratings" name="ratings" class="fpass" >
                                 </div>
                                 <div class="input-container-fp">
+                                    <label for="durasi" class="fp">Jumlah Hari</label>
+                                    <input type="text" id="durasi" name="durasi" class="fpass" >
+                                </div>
+                                <div class="input-container-fp">
                                     <label for="itinerary" class="fp">Itinerary</label>
                                     <input type="text" id="itinerary" name="itinerary" class="fpass">
                                 </div>

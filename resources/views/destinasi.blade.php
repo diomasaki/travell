@@ -47,10 +47,6 @@ if (!$user) {
               </select>
             </div>
             <div class="lsItem">
-              <label>Jumlah Orang</label>
-              <input placeholder="Jumlah Orang" type="text" name="jumlah_orang"/>
-            </div>
-            <div class="lsItem">
             <label>Estimasi Budget /<small> per orang</small></label>
               <input placeholder="Budget" type="number" name="price"/>
             </div>

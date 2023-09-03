@@ -23,6 +23,7 @@ class PaketWisataTable extends Migration
         $table->text('keterangan');
         $table->string('ratings');
         $table->text('itinerary');
+        $table->integer('durasi')->nullable();
         $table->string('slot1')->nullable();
         $table->string('slot2')->nullable();
         $table->string('slot3')->nullable();

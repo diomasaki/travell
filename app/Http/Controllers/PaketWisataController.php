@@ -344,6 +344,7 @@ public function create(Request $request) {
    $paketwisata->paket_wisata = $request->input('paket_wisata');
    $paketwisata->budget = $request->input('budget');
    $paketwisata->kota = $request->input('kota');
+   $paketwisata->durasi = $request->input('durasi');
    $paketwisata->kategori = $request->input('kategori');
     if ($request->hasFile('img_paketwisata')) {
         $request->file('img_paketwisata')->move('uploads/img/' , $request->file('img_paketwisata')->getClientOriginalName());

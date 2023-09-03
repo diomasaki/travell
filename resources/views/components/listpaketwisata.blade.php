@@ -45,9 +45,9 @@ function formatCurrency($value) {
         <!-- <span class="siSubtitle">
           Studio Apartment with Air conditioning
         </span> -->
-        <!-- <span class="siFeatures">
-          Entire studio • 1 bathroom • 21m² 1 full bed
-        </span> -->
+        <span class="siFeatures">
+          {{$result->keterangan}}
+        </span>
         <!-- <span class="siCancelOp">Free cancellation </span> -->
         <!-- <span class="siCancelOpSubtitle">
           You can cancel later, so lock in this great price today!
@@ -78,7 +78,11 @@ function formatCurrency($value) {
           <button>{{ $result->ratings }}</button>
         </div>
         <div class="siDetailTexts">
+          @if ($result->durasi > 0)
+          <span class="siDistance">{{$result->durasi}} hari</span>
+          @else
           <span class="siDistance">Mulai dari 1 hari</span>
+          @endif
           <span class="siPrice">Rp.{{ formatCurrency($result->budget) }}/<small>pax</small></span>
           <!-- <span class="siTaxOp">Includes taxes and fees</span> -->
           <a href="{{ route('detail', ['id' => $result->id]) }}" style="text-decoration: none; color: white;">

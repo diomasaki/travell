@@ -1912,13 +1912,17 @@ input[type=number] {
   .rButton {
     border: none;
     padding: 10px 20px;
-    background-color: #0071c2;
+    background-color: rgb(31 41 55);
     color: white;
     font-weight: bold;
     cursor: pointer;
     border-radius: 5px;
     width: 100%;
     margin-top: 20px;
+    &:hover{
+        transition: all 200ms ease-in-out;
+        opacity: 0.9;
+    }
   }
   
 
@@ -1926,3 +1930,7 @@ input[type=number] {
     margin-bottom: 10px;
 }
 
+.florm-sadal{
+    position: relative;
+    padding: 10px;
+}

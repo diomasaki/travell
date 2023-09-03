@@ -62,6 +62,7 @@ input:focus[type="text"] {
         opacity: 0.9;
     }
 }
+
     </style>
 
 <body>
@@ -72,22 +73,13 @@ input:focus[type="text"] {
         </div>
     <form action="{{ route('xendit') }}" method="POST">
         @csrf
-
-    @if ($detailData->durasi > 0)
-    <div class="lsItem">
-        <label for="date_range" class="ff-22">Pilih Rentang Tanggal</label>
-        <input type="text" id="date_range" name="date_range" placeholder="Pilih Rentang Tanggal" class="ff-22" />
-        <span id="dayCount" class="ff-22"></span>
-    </div>
-    @else
     <div class="lsItem">
         <label for="date_range" class="ff-22">Pilih Rentang Tanggal</label>
         <input type="text" id="date_range_forall" name="date_range" placeholder="Pilih Rentang Tanggal" class="ff-22" />
-        <input type="hidden" name="totalhargaforall" value="{{$detailData->budget }}">
+        <input type="hidden" name="totalhargaforall" value="{{$results->price }}">
         <span id="dayCount_forall" class="ff-22"></span>
         <input type="hidden" id="daysDiffInput" name="jumlahh_hari" class="ff-22" value="">
     </div>
-    @endif
     <div class="lsItem">
         <label class="ff-22">Jumlah Orang</label>
         <input placeholder="Jumlah Orang" type="text" name="jumlah_orang" class="ff-22"/>
@@ -112,9 +104,9 @@ input:focus[type="text"] {
         </div>
         <span id="addKtp">Tambah</span>
     </div>
-    <input type="hidden" name="totalharga" value="{{ ($detailData->budget)}}">
+    <input type="hidden" name="totalharga" value="{{ ($results->price)}}">
     <input type="hidden" name="payer_email" value="{{ $userEmail }}">
-    <input type="hidden" name="description" value="Pembayaran Tiket {{ $detailData->paket_wisata }}">
+    <input type="hidden" name="description" value="Pembayaran Tiket {{ $results->name }}">
     <button type="submit" class="rButton">
         Bayar
     </button>
@@ -134,49 +126,6 @@ input:focus[type="text"] {
     })
 </script>
 
-<script>
-const limitedDate = {{$detailData->durasi}};
-
-$(function () {
-    const dateRangePicker = $('#date_range');
-    const dayCount = $('#dayCount');
-    dateRangePicker.daterangepicker({
-        autoUpdateInput: false, 
-        locale: {
-            format: 'YYYY-MM-DD',
-            cancelLabel: 'Clear',
-        },
-    });
-
-    dateRangePicker.on('apply.daterangepicker', function (ev, picker) {
-        const startDate = picker.startDate;
-        const endDate = picker.endDate;
-        
-        const daysDiff = endDate.diff(startDate, 'days') + 1;
-        const daysStart = endDate.diff(startDate, 'days') + 1;
-        if (daysDiff > limitedDate) {
-            alert('Tanggal harus dipilih sebanyak ' + limitedDate + ' hari.');
-            dateRangePicker.val('');
-            dayCount.text(''); 
-        }else if (daysStart < limitedDate) {
-            alert('Tanggal kurang dari ' + limitedDate + ' hari.');
-            dateRangePicker.val('');
-            dayCount.text(''); 
-        } else {
-            dateRangePicker.val(startDate.format('YYYY-MM-DD') + ' - ' + endDate.format('YYYY-MM-DD'));
-
-            dayCount.text(` (${daysDiff} days)`);
-        }
-    });
-
-
-    // Handle clearing the date range
-    dateRangePicker.on('cancel.daterangepicker', function () {
-        $(this).val('');
-        dayCount.text(''); // Clear the day count when clearing the date range
-    });
-});
-</script>
 
 <script>
   document.addEventListener("DOMContentLoaded", function () {
@@ -192,23 +141,23 @@ $(function () {
             const newNamaContainer = document.createElement("div");
             newNamaContainer.classList.add("namaInputContainer");
             
-            const newLabel = document.createElement("label");
-            newLabel.setAttribute("for", "nama" + namaCounter);
-            newLabel.textContent = "Nama " + namaCounter;
-            
-            const newNamaInput = document.createElement("input");
-            newNamaInput.setAttribute("type", "text");
-            newNamaInput.setAttribute("id", "nama" + namaCounter);
-            newNamaInput.setAttribute("name", "nama[]"); // Use array for the input names
-            newNamaInput.setAttribute("placeholder", "Nama " + namaCounter);
-            
-            newNamaContainer.appendChild(newLabel);
-            newNamaContainer.appendChild(newNamaInput);
-            
-            namaInputs.appendChild(newNamaContainer);
-        } else {
+        const newLabel = document.createElement("label");
+        newLabel.setAttribute("for", "nama" + namaCounter);
+        newLabel.textContent = "Nama " + namaCounter;
+        
+        const newNamaInput = document.createElement("input");
+        newNamaInput.setAttribute("type", "text");
+        newNamaInput.setAttribute("id", "nama" + namaCounter);
+        newNamaInput.setAttribute("name", "nama[]"); // Use array for the input names
+        newNamaInput.setAttribute("placeholder", "Nama " + namaCounter);
+        
+        newNamaContainer.appendChild(newLabel);
+        newNamaContainer.appendChild(newNamaInput);
+        
+        namaInputs.appendChild(newNamaContainer);
+        }else {
             addNamaButton.disabled = true;
-            alert("Maksimal 2 nama untuk perwakilan!")
+            alert("Maksimal 2 nama perwakilan!")
         }
     });
 });
@@ -220,22 +169,22 @@ $(function () {
     const ktpInputs = document.getElementById("ktpInputs");
     const addKtpButton = document.getElementById("addKtp");
     let ktpCounter = 1; // Counter for incrementing labels
-    console.log(ktpCounter)
 
     addKtpButton.addEventListener("click", function () {
-        if (ktpCounter < 2) {
+        if (ktpCounter < 2)
+        {
 
             ktpCounter++;
             
             const newktpContainer = document.createElement("div");
             newktpContainer.classList.add("newktpContainer");
             
-        const newLabel = document.createElement("label");
-        newLabel.setAttribute("for", "ktp" + ktpCounter);
-        newLabel.textContent = "KTP " + ktpCounter;
-
-        const newKtpInput = document.createElement("input");
-        newKtpInput.setAttribute("type", "text");
+            const newLabel = document.createElement("label");
+            newLabel.setAttribute("for", "ktp" + ktpCounter);
+            newLabel.textContent = "KTP " + ktpCounter;
+            
+            const newKtpInput = document.createElement("input");
+            newKtpInput.setAttribute("type", "text");
         newKtpInput.setAttribute("id", "ktp" + ktpCounter);
         newKtpInput.setAttribute("name", "ktp[]"); // Use array for the input names
         newKtpInput.setAttribute("placeholder", "KTP " + ktpCounter);
@@ -245,9 +194,9 @@ $(function () {
         
         ktpInputs.appendChild(newktpContainer);
     }else {
-            addKtpButton.disabled = true;
-            alert("Maksimal 2 identitas untuk perwakilan!")
-        }
+        addKtpButton.disabled = true;
+        alert("Maksimal 2 identitas untuk perwakilan!")
+    }
     });
 });
 </script>

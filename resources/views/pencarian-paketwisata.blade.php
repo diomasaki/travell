@@ -34,10 +34,6 @@ if (!$user) {
           <form action="{{ route('pencarian-paketwisata-filter') }}" method="POST" class="pencarian-paketwisata-filter" id="myForm">
             @csrf
             <div class="lsItem">
-              <label>Durasi Liburan</label>
-              <input placeholder="Durasi" type="text" name="durasi" />
-            </div>
-            <div class="lsItem">
               <label>Kabupaten/Kota</label>
               <select name="kota" id="kota" class="kabupaten">
                     <option disabled selected>Pilih</option>
@@ -45,10 +41,6 @@ if (!$user) {
                     <option value="{{ $kotaOption }}">{{ $kotaOption }}</option>
                 @endforeach
                 </select>
-            </div>
-            <div class="lsItem">
-              <label>Jumlah Orang</label>
-              <input placeholder="Jumlah Orang" type="text" name="jumlah_orang"/>
             </div>
             <div class="lsItem">
               <label>Estimasi Budget /<small> per orang</small></label>
@@ -142,4 +134,43 @@ if (!$user) {
         // Submit the form
         form.submit();
     });
+</script>
+
+
+<script>
+
+$(function () {
+    const dateRangePicker = $('#date_range');
+    const dayCount = $('#dayCount');
+
+    dateRangePicker.daterangepicker({
+        autoUpdateInput: false, // Prevent the input from updating automatically
+        locale: {
+            format: 'YYYY-MM-DD', // Set the desired date format
+            cancelLabel: 'Clear', // Label for the clear button
+        },
+    });
+
+    // Handle date range selection and validation
+    dateRangePicker.on('apply.daterangepicker', function (ev, picker) {
+        const startDate = picker.startDate;
+        const endDate = picker.endDate;
+
+        // Calculate the number of days between two dates
+        const daysDiff = endDate.diff(startDate, 'days') + 1; // Adding 1 to include both start and end dates
+
+            // Update the input field with the selected date range
+            dateRangePicker.val(startDate.format('YYYY-MM-DD') + ' - ' + endDate.format('YYYY-MM-DD'));
+
+            // Display the number of days
+            dayCount.text(` (${daysDiff} hari)`); // Display the count in parentheses
+            $('#daysDiffInput').val(daysDiff);
+    });
+
+    // Handle clearing the date range
+    dateRangePicker.on('cancel.daterangepicker', function () {
+        $(this).val('');
+        dayCount.text(''); // Clear the day count when clearing the date range
+    });
+});
 </script>
