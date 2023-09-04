@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.1
+-- version 5.2.0
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 27 Agu 2023 pada 13.05
--- Versi server: 10.4.28-MariaDB
--- Versi PHP: 7.3.16
+-- Waktu pembuatan: 04 Sep 2023 pada 11.56
+-- Versi server: 10.4.24-MariaDB
+-- Versi PHP: 7.4.29
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -29,7 +29,7 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `category` (
   `id` bigint(20) UNSIGNED NOT NULL,
-  `category` varchar(255) NOT NULL,
+  `category` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -42,9 +42,9 @@ CREATE TABLE `category` (
 
 CREATE TABLE `destinations` (
   `id` bigint(20) UNSIGNED NOT NULL,
-  `name` varchar(255) NOT NULL,
-  `description` text NOT NULL,
-  `img_destinations` varchar(255) NOT NULL,
+  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `description` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `img_destinations` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -57,7 +57,7 @@ CREATE TABLE `destinations` (
 
 CREATE TABLE `migrations` (
   `id` int(10) UNSIGNED NOT NULL,
-  `migration` varchar(255) NOT NULL,
+  `migration` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `batch` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
@@ -66,16 +66,16 @@ CREATE TABLE `migrations` (
 --
 
 INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
-(170, '2019_12_14_000001_create_personal_access_tokens_table', 1),
-(171, '2023_08_15_020358_users_table', 1),
-(172, '2023_08_15_020457_destinations_table', 1),
-(173, '2023_08_15_020529_restaurants_table', 1),
-(174, '2023_08_15_020557_reviews_table', 1),
-(175, '2023_08_15_020619_wisatas_table', 1),
-(176, '2023_08_18_010959_category_table', 1),
-(177, '2023_08_18_063329_paket_wisata_table', 1),
-(178, '2023_08_20_053631_create_payments_table', 1),
-(179, '2023_08_23_101856_password_resets_table', 1);
+(190, '2019_12_14_000001_create_personal_access_tokens_table', 1),
+(191, '2023_08_15_020358_users_table', 1),
+(192, '2023_08_15_020457_destinations_table', 1),
+(193, '2023_08_15_020529_restaurants_table', 1),
+(194, '2023_08_15_020557_reviews_table', 1),
+(195, '2023_08_15_020619_wisatas_table', 1),
+(196, '2023_08_18_010959_category_table', 1),
+(197, '2023_08_18_063329_paket_wisata_table', 1),
+(198, '2023_08_20_053631_create_payments_table', 1),
+(199, '2023_08_23_101856_password_resets_table', 1);
 
 -- --------------------------------------------------------
 
@@ -85,34 +85,35 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 
 CREATE TABLE `paketwisata` (
   `id` bigint(20) UNSIGNED NOT NULL,
-  `paket_wisata` varchar(255) NOT NULL,
+  `paket_wisata` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `budget` int(11) NOT NULL,
-  `kota` varchar(255) NOT NULL,
-  `kategori` varchar(255) NOT NULL,
-  `img_paketwisata` text NOT NULL,
-  `keterangan` text NOT NULL,
-  `ratings` varchar(255) NOT NULL,
-  `itinerary` text NOT NULL,
-  `slot1` varchar(255) DEFAULT NULL,
-  `slot2` varchar(255) DEFAULT NULL,
-  `slot3` varchar(255) DEFAULT NULL,
-  `slot4` varchar(255) DEFAULT NULL,
-  `slot5` varchar(255) DEFAULT NULL,
-  `slot6` varchar(255) DEFAULT NULL,
-  `slot7` varchar(255) DEFAULT NULL,
-  `slot8` varchar(255) DEFAULT NULL,
-  `slot9` varchar(255) DEFAULT NULL,
-  `slot10` varchar(255) DEFAULT NULL,
-  `slot11` varchar(255) DEFAULT NULL,
-  `slot12` varchar(255) DEFAULT NULL,
-  `slot13` varchar(255) DEFAULT NULL,
-  `slot14` varchar(255) DEFAULT NULL,
-  `slot15` varchar(255) DEFAULT NULL,
-  `slot16` varchar(255) DEFAULT NULL,
-  `slot17` varchar(255) DEFAULT NULL,
-  `slot18` varchar(255) DEFAULT NULL,
-  `slot19` varchar(255) DEFAULT NULL,
-  `slot20` varchar(255) DEFAULT NULL,
+  `kota` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `kategori` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `img_paketwisata` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `keterangan` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `ratings` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `itinerary` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `durasi` int(11) DEFAULT NULL,
+  `slot1` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `slot2` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `slot3` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `slot4` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `slot5` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `slot6` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `slot7` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `slot8` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `slot9` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `slot10` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `slot11` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `slot12` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `slot13` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `slot14` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `slot15` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `slot16` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `slot17` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `slot18` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `slot19` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `slot20` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -121,9 +122,12 @@ CREATE TABLE `paketwisata` (
 -- Dumping data untuk tabel `paketwisata`
 --
 
-INSERT INTO `paketwisata` (`id`, `paket_wisata`, `budget`, `kota`, `kategori`, `img_paketwisata`, `keterangan`, `ratings`, `itinerary`, `slot1`, `slot2`, `slot3`, `slot4`, `slot5`, `slot6`, `slot7`, `slot8`, `slot9`, `slot10`, `slot11`, `slot12`, `slot13`, `slot14`, `slot15`, `slot16`, `slot17`, `slot18`, `slot19`, `slot20`, `created_at`, `updated_at`) VALUES
-(1, 'Paket Wisata Murah 1', 700000, 'Denpasar', 'Alam', 'mykonos.jpg', 'Bali dikenal dengan sebutan \"Pulau Dewata\" karena memiliki beragam tempat suci, upacara adat, dan kebudayaan yang sangat kaya. Pulau ini menawarkan berbagai atraksi dan aktivitas untuk para wisatawan, mulai dari pantai-pantai yang menakjubkan, sawah hijau yang indah, hingga gunung-gunung yang mempesona.', '7.8', '06:00 = Berangkat.\n10:00 = Istirahat.\n12:30 = Makan siang.\n15:00 = Explore tempat wisata.\n18:00 = Kembali ke penginapan.\n20:00 = Makan malam.\n22:00 = Istirahat.\n23:00 = Perjalanan pulang.\n24:00 = Sampai di villa.', NULL, 'Gunung Rinjani', 'Gunung Latimojong', 'Gunung Puncak Jaya', 'Pantai Pailus', 'Gunung Merapi', 'Gunung Semeru', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2023-08-23 15:49:52', '2023-08-27 03:17:52'),
-(5, 'Paket Wisata Murah 2', 1900000, 'Surabaya', 'Alam', 'santorini.jpg', 'Keindahan alam', '9.9', '06:00 = Berangkat. 10:00 = Istirahat. 12:30 = Makan siang. 15:00 = Explore tempat wisata. 18:00 = Kembali ke penginapan. 20:00 = Makan malam. 22:00 = Istirahat. 23:00 = Perjalanan pulang. 24:00 = Sampai di villa.', NULL, 'Gunung Rinjani', NULL, 'Gunung Puncak Jaya', 'Pantai Pailus', NULL, 'Gunung Semeru', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2023-08-27 03:18:56', '2023-08-27 03:18:56');
+INSERT INTO `paketwisata` (`id`, `paket_wisata`, `budget`, `kota`, `kategori`, `img_paketwisata`, `keterangan`, `ratings`, `itinerary`, `durasi`, `slot1`, `slot2`, `slot3`, `slot4`, `slot5`, `slot6`, `slot7`, `slot8`, `slot9`, `slot10`, `slot11`, `slot12`, `slot13`, `slot14`, `slot15`, `slot16`, `slot17`, `slot18`, `slot19`, `slot20`, `created_at`, `updated_at`) VALUES
+(1, 'Paket Wisata Alam', 1000000, 'Denpasar', 'Alam', 'mykonos.jpg', 'Keindahan alam', '4.8', '06:00 = Berangkat. 10:00 = Istirahat. 12:30 = Makan siang. 15:00 = Explore tempat wisata. 18:00 = Kembali ke penginapan. 20:00 = Makan malam. 22:00 = Istirahat.', NULL, 'Gunung Rinjani', 'Gunung Latimojong', 'Gunung Puncak Jaya', 'Gunung Merapi', '', '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2023-09-03 06:59:17'),
+(2, 'Paket Wisata Puncak Jaya 4D3N', 1500000, 'Denpasar', 'Budaya', 'puncakjaya.jpg', 'Keindahan wisata puncak jaya', '8.7', '06:00 = Berangkat. 10:00 = Istirahat. 12:30 = Makan siang. 15:00 = Explore tempat wisata. 18:00 = Kembali ke penginapan. 20:00 = Makan malam. 22:00 = Istirahat. 23:00 = Perjalanan pulang. 24:00 = Sampai di villa.', 4, 'Gunung Rinjani', 'Gunung Semeru', 'Gunung Bromo', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2023-09-03 05:07:04', '2023-09-03 06:57:32'),
+(3, 'Paket Wisata 2D1N', 970000, 'Makassar', 'Pantai, Religi, Minat Khusus', 'santorini.jpg', 'Keindahan pantai makassar, dan juga minat khusus wisatawan', '8.9', '06:00 = Berangkat. 10:00 = Istirahat. 12:30 = Makan siang. 15:00 = Explore tempat wisata. 18:00 = Kembali ke penginapan. 20:00 = Makan malam. 22:00 = Istirahat. 23:00 = Perjalanan pulang. 24:00 = Sampai di villa.', 2, 'Gunung Rinjani', 'Gunung Latimojong', 'Gunung Semeru', 'Gunung Puncak Jaya', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2023-09-03 07:02:09', '2023-09-03 07:02:09'),
+(4, 'Paket Wisata Denpasar 7D6N', 6700000, 'Denpasat', 'Budaya, Pantai, Religi, Alam, Minat Khusus', 'semeru.jpg', 'Bali memiliki keindahan alam terbaik, paling popular', '10.0', '06:00 = Berangkat. 10:00 = Istirahat. 12:30 = Makan siang. 15:00 = Explore tempat wisata. 18:00 = Kembali ke penginapan. 20:00 = Makan malam. 22:00 = Istirahat. 23:00 = Perjalanan pulang. 24:00 = Sampai di villa.', 7, 'Gunung Puncak Jaya', 'Gunung Bromo', 'Gunung Latimojong', 'Gunung Merapi', 'Gunung Semeru', 'Pantai Pailus', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2023-09-03 07:16:18', '2023-09-03 07:16:18'),
+(5, 'Paket Wisata 10D9N', 8100000, 'Makassar', 'Budaya, Religi, Minat Khusus', 'bromo.jpg', 'Makassar keindahan alam yang disukai oleh banyak wisatawan', '8.6', '06:00 = Berangkat. 10:00 = Istirahat. 12:30 = Makan siang. 15:00 = Explore tempat wisata. 18:00 = Kembali ke penginapan. 20:00 = Makan malam. 22:00 = Istirahat. 23:00 = Perjalanan pulang. 24:00 = Sampai di villa.', 10, NULL, 'Gunung Bromo', 'Gunung Latimojong', NULL, NULL, 'Pantai Pailus', 'Gunung Rinjani', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2023-09-03 07:17:34', '2023-09-03 07:17:34');
 
 -- --------------------------------------------------------
 
@@ -132,8 +136,8 @@ INSERT INTO `paketwisata` (`id`, `paket_wisata`, `budget`, `kota`, `kategori`, `
 --
 
 CREATE TABLE `password_resets` (
-  `email` varchar(255) NOT NULL,
-  `token` varchar(255) NOT NULL,
+  `email` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `token` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
@@ -145,9 +149,9 @@ CREATE TABLE `password_resets` (
 
 CREATE TABLE `payments` (
   `id` bigint(20) UNSIGNED NOT NULL,
-  `checkout_link` varchar(255) NOT NULL,
-  `external_id` varchar(255) NOT NULL,
-  `status` varchar(255) NOT NULL,
+  `checkout_link` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `external_id` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `status` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -157,12 +161,20 @@ CREATE TABLE `payments` (
 --
 
 INSERT INTO `payments` (`id`, `checkout_link`, `external_id`, `status`, `created_at`, `updated_at`) VALUES
-(1, 'https://checkout-staging.xendit.co/v2/64e68eb8c231e9ff36d288a8', 'b85cf821-f6c2-4ea4-9549-149a6defdb08', 'pending', '2023-08-23 15:56:58', '2023-08-23 15:56:58'),
-(2, 'https://checkout-staging.xendit.co/v2/64e806376327e60dcc39533f', '5a16a2b8-8e3c-4396-a926-08fa1bf6982f', 'pending', '2023-08-24 18:39:04', '2023-08-24 18:39:04'),
-(3, 'https://checkout-staging.xendit.co/v2/64e806398001fb557e104e21', '9bccaebf-ecff-4c6f-8ed6-becd053bf131', 'pending', '2023-08-24 18:39:06', '2023-08-24 18:39:06'),
-(4, 'https://checkout-staging.xendit.co/v2/64e808f539ef65c197c211fe', 'e13fe505-3673-499b-8346-f8868b82f036', 'pending', '2023-08-24 18:50:46', '2023-08-24 18:50:46'),
-(5, 'https://checkout-staging.xendit.co/v2/64e94ecd6327e6452d3b10f0', 'eaaf34f1-433f-43e0-b7b2-a247b56a3381', 'pending', '2023-08-25 18:01:03', '2023-08-25 18:01:03'),
-(6, 'https://checkout-staging.xendit.co/v2/64eb1f7da7a38d6b9ca0d5b9', '5ced7bb5-9960-4d4d-b29a-373248e9c0f9', 'pending', '2023-08-27 03:03:43', '2023-08-27 03:03:43');
+(1, 'https://checkout-staging.xendit.co/v2/64f47f6bcbdd91f0798fa955', '75fe9909-5b13-4a0b-b2be-192a45a04c52', 'pending', '2023-09-03 05:43:24', '2023-09-03 05:43:24'),
+(2, 'https://checkout-staging.xendit.co/v2/64f486f2cbdd915b138fb335', 'ae862b1c-efd8-4f6b-a7c1-c949527aa0c9', 'pending', '2023-09-03 06:15:31', '2023-09-03 06:15:31'),
+(3, 'https://checkout-staging.xendit.co/v2/64f48726cbdd9177548fb36d', 'efe03ebf-8d2b-4ee1-bc71-88c091a16213', 'pending', '2023-09-03 06:16:22', '2023-09-03 06:16:22'),
+(4, 'https://checkout-staging.xendit.co/v2/64f48772cbdd91588c8fb3c7', '4a806e9a-1138-4263-bca4-4b2cd60a272f', 'pending', '2023-09-03 06:17:39', '2023-09-03 06:17:39'),
+(5, 'https://checkout-staging.xendit.co/v2/64f48814587067619d443fbc', 'cdb76e93-e74f-4a64-8562-9b6c93ae6f11', 'pending', '2023-09-03 06:20:20', '2023-09-03 06:20:20'),
+(6, 'https://checkout-staging.xendit.co/v2/64f48ce3ef7cf6385c5773b0', '0b5ced63-3796-409d-83ad-68fe4710cc30', 'pending', '2023-09-03 06:40:51', '2023-09-03 06:40:51'),
+(7, 'https://checkout-staging.xendit.co/v2/64f48d0f587067609744463a', '7c7c7374-c0fe-49d0-a41c-45ae2007ed26', 'pending', '2023-09-03 06:41:35', '2023-09-03 06:41:35'),
+(8, 'https://checkout-staging.xendit.co/v2/64f490605870679681444a0d', 'e1dbe6be-3e69-43e6-a2ed-41de3a60adc0', 'pending', '2023-09-03 06:55:46', '2023-09-03 06:55:46'),
+(9, 'https://checkout-staging.xendit.co/v2/64f49609ec8859c8d7343fc4', 'dba281ad-b7f9-44c9-a77b-e6b01d4131ec', 'pending', '2023-09-03 07:19:54', '2023-09-03 07:19:54'),
+(10, 'https://checkout-staging.xendit.co/v2/64f496dd587067120c4451c0', '17ff7db1-4c46-4980-ad2c-4e78c4804072', 'pending', '2023-09-03 07:23:25', '2023-09-03 07:23:25'),
+(11, 'https://checkout-staging.xendit.co/v2/64f49c9acbdd913d608fcefc', '78ae5737-9235-4633-8e1b-c30e10cf97c8', 'pending', '2023-09-03 07:47:55', '2023-09-03 07:47:55'),
+(12, 'https://checkout-staging.xendit.co/v2/64f4bb8dcbdd91bd008ff66d', 'f45cf554-93e0-4846-b7c0-2d901add3f13', 'pending', '2023-09-03 09:59:57', '2023-09-03 09:59:57'),
+(13, 'https://checkout-staging.xendit.co/v2/64f5a75ddba969783666e8bb', 'cf573e93-2fbd-4a99-9f7f-2fc1f8837bbe', 'pending', '2023-09-04 02:46:06', '2023-09-04 02:46:06'),
+(14, 'https://checkout-staging.xendit.co/v2/64f5a791164f8d3a327f8f3a', 'a24f6b1d-ff44-4da3-9c48-29f8f0926487', 'pending', '2023-09-04 02:46:56', '2023-09-04 02:46:56');
 
 -- --------------------------------------------------------
 
@@ -172,11 +184,11 @@ INSERT INTO `payments` (`id`, `checkout_link`, `external_id`, `status`, `created
 
 CREATE TABLE `personal_access_tokens` (
   `id` bigint(20) UNSIGNED NOT NULL,
-  `tokenable_type` varchar(255) NOT NULL,
+  `tokenable_type` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `tokenable_id` bigint(20) UNSIGNED NOT NULL,
-  `name` varchar(255) NOT NULL,
-  `token` varchar(64) NOT NULL,
-  `abilities` text DEFAULT NULL,
+  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `token` varchar(64) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `abilities` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `last_used_at` timestamp NULL DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
@@ -191,10 +203,10 @@ CREATE TABLE `personal_access_tokens` (
 CREATE TABLE `restaurant` (
   `id` bigint(20) UNSIGNED NOT NULL,
   `destinations_id` bigint(20) UNSIGNED NOT NULL,
-  `name` varchar(255) NOT NULL,
-  `description` text NOT NULL,
-  `img_restaurant` varchar(255) NOT NULL,
-  `price` varchar(255) NOT NULL,
+  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `description` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `img_restaurant` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `price` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -210,7 +222,7 @@ CREATE TABLE `review` (
   `destinations_id` bigint(20) UNSIGNED NOT NULL,
   `user_id` bigint(20) UNSIGNED NOT NULL,
   `rating` int(11) NOT NULL,
-  `comment` text NOT NULL,
+  `comment` text COLLATE utf8mb4_unicode_ci NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -223,16 +235,16 @@ CREATE TABLE `review` (
 
 CREATE TABLE `users` (
   `id` bigint(20) UNSIGNED NOT NULL,
-  `name` varchar(255) NOT NULL,
-  `email` varchar(255) NOT NULL,
+  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `email` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `email_verified_at` timestamp NULL DEFAULT NULL,
-  `password` varchar(255) NOT NULL,
-  `phone` varchar(255) DEFAULT NULL,
+  `password` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `phone` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `isAdmin` tinyint(1) NOT NULL DEFAULT 0,
-  `remember_token` varchar(100) DEFAULT NULL,
+  `remember_token` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
-  `google_id` varchar(255) DEFAULT NULL
+  `google_id` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
@@ -240,8 +252,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `email`, `email_verified_at`, `password`, `phone`, `isAdmin`, `remember_token`, `created_at`, `updated_at`, `google_id`) VALUES
-(2, 'callmegod', 'sendeross99@gmail.com', NULL, '$2y$10$lb5hXJ5ECX5DPhQXbAQQV.gw2.KidTPcQN8vHJEeqeVJgr0nnibqW', NULL, 0, NULL, '2023-08-24 18:38:52', '2023-08-24 18:38:52', '112727630075676932508'),
-(3, 'admin', 'admin@protonmail.com', NULL, '$2y$10$75vPQSNov5XFF6whfyYSMeyTFCJSvmZKXFj35xrC0Xlk3phth5Fcu', '11111111', 1, NULL, '2023-08-25 18:58:46', '2023-08-27 02:50:30', NULL);
+(1, 'admin', 'admin@protonmail.com', NULL, '$2y$10$wBwOBtdnQQzY5mmEQKIl6ORgnrdzr1JCkryeSlJeL7jOAWP4ADjy6', '111111111', 1, NULL, '2023-09-03 05:04:44', '2023-09-03 05:04:44', NULL);
 
 -- --------------------------------------------------------
 
@@ -251,12 +262,12 @@ INSERT INTO `users` (`id`, `name`, `email`, `email_verified_at`, `password`, `ph
 
 CREATE TABLE `wisata` (
   `id` bigint(20) UNSIGNED NOT NULL,
-  `name` varchar(255) NOT NULL,
-  `description` text NOT NULL,
-  `img_wisata` varchar(255) NOT NULL,
+  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `description` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `img_wisata` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `price` int(11) NOT NULL,
-  `kota` varchar(255) NOT NULL,
-  `ratings` varchar(255) NOT NULL,
+  `kota` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `ratings` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -266,13 +277,13 @@ CREATE TABLE `wisata` (
 --
 
 INSERT INTO `wisata` (`id`, `name`, `description`, `img_wisata`, `price`, `kota`, `ratings`, `created_at`, `updated_at`) VALUES
-(1, 'Gunung Bromo', 'Bali dikenal dengan sebutan \"Pulau Dewata\" karena memiliki beragam tempat suci, upacara adat, dan kebudayaan yang sangat kaya. Pulau ini menawarkan berbagai atraksi dan aktivitas untuk para wisatawan, mulai dari pantai-pantai yang menakjubkan, sawah hijau yang indah, hingga gunung-gunung yang mempesona.', 'bromo.jpg', 400000, 'Malang', '9.9', '2023-08-23 15:44:42', '2023-08-23 15:44:42'),
-(2, 'Gunung Rinjani', 'Bali dikenal dengan sebutan \"Pulau Dewata\" karena memiliki beragam tempat suci, upacara adat, dan kebudayaan yang sangat kaya. Pulau ini menawarkan berbagai atraksi dan aktivitas untuk para wisatawan, mulai dari pantai-pantai yang menakjubkan, sawah hijau yang indah, hingga gunung-gunung yang mempesona.', 'rinjani.jpg', 700000, 'Malang', '7.8', '2023-08-23 15:45:01', '2023-08-23 15:45:01'),
-(3, 'Gunung Latimojong', 'Bali dikenal dengan sebutan \"Pulau Dewata\" karena memiliki beragam tempat suci, upacara adat, dan kebudayaan yang sangat kaya. Pulau ini menawarkan berbagai atraksi dan aktivitas untuk para wisatawan, mulai dari pantai-pantai yang menakjubkan, sawah hijau yang indah, hingga gunung-gunung yang mempesona.', 'latimojong.jpg', 800000, 'Denpasar', '8.9', '2023-08-23 15:45:19', '2023-08-23 15:45:19'),
-(4, 'Gunung Puncak Jaya', 'Bali dikenal dengan sebutan \"Pulau Dewata\" karena memiliki beragam tempat suci, upacara adat, dan kebudayaan yang sangat kaya. Pulau ini menawarkan berbagai atraksi dan aktivitas untuk para wisatawan, mulai dari pantai-pantai yang menakjubkan, sawah hijau yang indah, hingga gunung-gunung yang mempesona.', 'puncakjaya.jpg', 790000, 'Denpasar', '7.8', '2023-08-23 15:45:39', '2023-08-23 15:45:39'),
-(5, 'Pantai Pailus', 'Bali dikenal dengan sebutan \"Pulau Dewata\" karena memiliki beragam tempat suci, upacara adat, dan kebudayaan yang sangat kaya. Pulau ini menawarkan berbagai atraksi dan aktivitas untuk para wisatawan, mulai dari pantai-pantai yang menakjubkan, sawah hijau yang indah, hingga gunung-gunung yang mempesona.', 'pantaipailus.jpeg', 680000, 'Malang', '7.8', '2023-08-23 15:46:09', '2023-08-23 15:46:09'),
-(6, 'Gunung Merapi', 'Bali dikenal dengan sebutan \"Pulau Dewata\" karena memiliki beragam tempat suci, upacara adat, dan kebudayaan yang sangat kaya. Pulau ini menawarkan berbagai atraksi dan aktivitas untuk para wisatawan, mulai dari pantai-pantai yang menakjubkan, sawah hijau yang indah, hingga gunung-gunung yang mempesona.', 'merapi.jpg', 740000, 'Denpasar', '6.9', '2023-08-23 15:46:33', '2023-08-23 15:46:33'),
-(8, 'Gunung Semeru', 'Gunung Semeru dikenal dengan sebutan \"Pulau Dewata\" karena memiliki beragam tempat suci, upacara adat, dan kebudayaan yang sangat kaya. Pulau ini menawarkan berbagai atraksi dan aktivitas untuk para wisatawan, mulai dari pantai-pantai yang menakjubkan, sawah hijau yang indah, hingga gunung-gunung yang mempesona.', 'semeru.jpg', 900000, 'Lumajang', '9.9', '2023-08-25 18:23:14', '2023-08-25 18:23:14');
+(1, 'Gunung Puncak Jaya', 'Puncak jaya adalah gunung yang memiliki keistimewaan alam', 'puncakjaya.jpg', 1200000, 'Puncak Jaya', '10.0', '2023-09-03 07:03:18', '2023-09-03 07:03:18'),
+(2, 'Gunung Bromo', 'Yogyakarta, atau lebih dikenal dengan sebutan \"Jogja,\" adalah sebuah kota istimewa dan provinsi di Indonesia yang memiliki daya tarik budaya, sejarah, dan alam yang kaya. Terletak di bagian selatan Pulau Jawa, Jogja dikenal sebagai pusat kebudayaan dan pendidikan, serta salah satu destinasi wisata populer di Indonesia.', 'bromo.jpg', 200000, 'Yogyakarta.', '4.8', NULL, NULL),
+(3, 'Gunung Latimojong', 'Yogyakarta, atau lebih dikenal dengan sebutan \"Jogja,\" adalah sebuah kota istimewa dan provinsi di Indonesia yang memiliki daya tarik budaya, sejarah, dan alam yang kaya. Terletak di bagian selatan Pulau Jawa, Jogja dikenal sebagai pusat kebudayaan dan pendidikan, serta salah satu destinasi wisata populer di Indonesia.', 'latimojong.jpg', 400000, 'Malang.', '4.8', NULL, NULL),
+(4, 'Gunung Merapi', 'Yogyakarta, atau lebih dikenal dengan sebutan \"Jogja,\" adalah sebuah kota istimewa dan provinsi di Indonesia yang memiliki daya tarik budaya, sejarah, dan alam yang kaya. Terletak di bagian selatan Pulau Jawa, Jogja dikenal sebagai pusat kebudayaan dan pendidikan, serta salah satu destinasi wisata populer di Indonesia.', 'merapi.jpg', 600000, 'Denpasar.', '4.8', NULL, NULL),
+(5, 'Gunung Semeru', 'Yogyakarta, atau lebih dikenal dengan sebutan \"Jogja,\" adalah sebuah kota istimewa dan provinsi di Indonesia yang memiliki daya tarik budaya, sejarah, dan alam yang kaya. Terletak di bagian selatan Pulau Jawa, Jogja dikenal sebagai pusat kebudayaan dan pendidikan, serta salah satu destinasi wisata populer di Indonesia.', 'semeru.jpg', 800000, 'Bandung.', '4.8', NULL, NULL),
+(6, 'Pantai Pailus', 'Yogyakarta, atau lebih dikenal dengan sebutan \"Jogja,\" adalah sebuah kota istimewa dan provinsi di Indonesia yang memiliki daya tarik budaya, sejarah, dan alam yang kaya. Terletak di bagian selatan Pulau Jawa, Jogja dikenal sebagai pusat kebudayaan dan pendidikan, serta salah satu destinasi wisata populer di Indonesia.', 'pantaipailus.jpeg', 700000, 'Jakarta.', '4.8', NULL, NULL),
+(7, 'Gunung Rinjani', 'Yogyakarta, atau lebih dikenal dengan sebutan \"Jogja,\" adalah sebuah kota istimewa dan provinsi di Indonesia yang memiliki daya tarik budaya, sejarah, dan alam yang kaya. Terletak di bagian selatan Pulau Jawa, Jogja dikenal sebagai pusat kebudayaan dan pendidikan, serta salah satu destinasi wisata populer di Indonesia.', 'rinjani.jpg', 360000, 'Pangandaran.', '4.8', NULL, NULL);
 
 --
 -- Indexes for dumped tables
@@ -370,7 +381,7 @@ ALTER TABLE `destinations`
 -- AUTO_INCREMENT untuk tabel `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=180;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=200;
 
 --
 -- AUTO_INCREMENT untuk tabel `paketwisata`
@@ -382,7 +393,7 @@ ALTER TABLE `paketwisata`
 -- AUTO_INCREMENT untuk tabel `payments`
 --
 ALTER TABLE `payments`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT untuk tabel `personal_access_tokens`
@@ -406,13 +417,13 @@ ALTER TABLE `review`
 -- AUTO_INCREMENT untuk tabel `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT untuk tabel `wisata`
 --
 ALTER TABLE `wisata`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- Ketidakleluasaan untuk tabel pelimpahan (Dumped Tables)
