@@ -141,6 +141,7 @@ $(function () {
     const dateRangePicker = $('#date_range');
     const dayCount = $('#dayCount');
     dateRangePicker.daterangepicker({
+        singleDatePicker: true, // Allow only one date selection
         autoUpdateInput: false, 
         locale: {
             format: 'YYYY-MM-DD',
@@ -149,31 +150,20 @@ $(function () {
     });
 
     dateRangePicker.on('apply.daterangepicker', function (ev, picker) {
-        const startDate = picker.startDate;
-        const endDate = picker.endDate;
-        
-        const daysDiff = endDate.diff(startDate, 'days') + 1;
-        const daysStart = endDate.diff(startDate, 'days') + 1;
-        if (daysDiff > limitedDate) {
-            alert('Tanggal harus dipilih sebanyak ' + limitedDate + ' hari.');
-            dateRangePicker.val('');
-            dayCount.text(''); 
-        }else if (daysStart < limitedDate) {
-            alert('Tanggal kurang dari ' + limitedDate + ' hari.');
-            dateRangePicker.val('');
-            dayCount.text(''); 
-        } else {
-            dateRangePicker.val(startDate.format('YYYY-MM-DD') + ' - ' + endDate.format('YYYY-MM-DD'));
+        const selectedDate = picker.startDate;
 
-            dayCount.text(` (${daysDiff} days)`);
-        }
+        // Calculate the end date by adding (limitedDate - 1) days to the selected date
+        const endDate = selectedDate.clone().add(limitedDate - 1, 'days');
+
+        // Set the input value and display the day count
+        dateRangePicker.val(selectedDate.format('YYYY-MM-DD') + ' - ' + endDate.format('YYYY-MM-DD'));
+        dayCount.text(` (${limitedDate} days)`);
     });
-
 
     // Handle clearing the date range
     dateRangePicker.on('cancel.daterangepicker', function () {
         $(this).val('');
-        dayCount.text(''); // Clear the day count when clearing the date range
+        dayCount.text('');
     });
 });
 </script>
