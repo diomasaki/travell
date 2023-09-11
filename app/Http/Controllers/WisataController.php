@@ -71,7 +71,6 @@ class WisataController extends Controller
     //GET WISATA BY ID
     public function getwisatabyid($id) {
         try {
-            $userEmail = Auth::user()->email;
 
             $jumlahorang = session('jumlahorang');
             $durasi = session('durasi');
@@ -217,5 +216,18 @@ class WisataController extends Controller
         $Wisata = Wisata::find($id);
         $Wisata->delete();
         return redirect('/destinasi')->with('success', 'Your action was successful!');
+    }
+
+
+    public function paymentW($id) {
+        try {
+            $userEmail = Auth::user()->email;
+            $results = DB::table('wisata')->where('id', $id)->first();
+            // Use first() to get a single row matching the ID
+    
+            return view('paymentw', ['results' => $results, 'userEmail' => $userEmail]);
+        } catch (Exception $e) {
+            dd($e->getMessage());
+        }
     }
 }

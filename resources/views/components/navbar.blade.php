@@ -1,7 +1,3 @@
-<?php
-$user = Auth::user()->name;
-?>
-
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -12,7 +8,32 @@ $user = Auth::user()->name;
     <title></title>
 </head>
 <body>
-@if(auth()->user() && auth()->user()->isAdmin)
+@if(!auth()->user())
+    <div class="container-nav">
+        <div class="wrapper-nav">
+            <div class="left-nav"><div class="hamburger" onclick="toggleMenu()"><div class="line"></div><div class="line"></div><div class="line"></div></div><ul class="hamburger-container" id="hamburgerContainer"><a href="{{ route('home') }}" style="text-decoration: none; color: white;"><li class="hamburger">Beranda</li></a><a href="{{ route('destinasi') }}" style="text-decoration: none; color: white;"><li class="hamburger">Destinasi</li></a><a href="{{ route('buat-trip') }}" style="text-decoration: none; color: white;"><li class="hamburger">Buat Trip</li></a></ul><div class="slogan-desc2">youridealescape.com</div>  <div class="hamburgers" onclick="toggleMenuTablet()"><div class="lines"></div><div class="lines"></div><div class="lines"></div></div><ul class="hamburger-container-tablet" id="hamburgerContainerTablet"><li class="hamburger-tablet">Beranda</li><li class="hamburger-tablet">Destinasi</li><li class="hamburger-tablet">Buat Trip</li></ul></div>
+            <div class="right-nav"><div class="menuItem-nav"><a href="{{ route('home') }}" style="text-decoration: none; color: white;">Beranda</a></div><a href="{{ route('destinasi') }}" style="text-decoration: none; color: white;"><div class="menuItem-nav">Tempat Wisata</div></a> 
+            <a href="{{ route('buat-trip') }}" style="text-decoration: none; color: white;">
+            <div class="menuItem-nav">
+                Paket Wisata
+            </div>
+            </a>
+            <div class="menuItem-nav">
+            <a href="/register" style="text-decoration: none; color: white;">
+                Register
+            </a>
+            </div>
+            <div class="menuItem-nav">
+            <a href="/login" style="text-decoration: none; color: white;">    
+                Login
+            </a>
+            </div>
+            </div>
+        </div>
+    </div>
+</div>    
+@elseif(auth()->user() && auth()->user()->isAdmin)
+<?php $user = Auth::user()->name?>
     <div class="container-nav">
         <div class="wrapper-nav">
             <div class="left-nav"><div class="hamburger" onclick="toggleMenu()"><div class="line"></div><div class="line"></div><div class="line"></div></div><ul class="hamburger-container" id="hamburgerContainer"><a href="{{ route('home') }}" style="text-decoration: none; color: white;"><li class="hamburger">Beranda</li></a><a href="{{ route('destinasi') }}" style="text-decoration: none; color: white;"><li class="hamburger">Destinasi</li></a><a href="{{ route('buat-trip') }}" style="text-decoration: none; color: white;"><li class="hamburger">Buat Trip</li></a></ul><div class="slogan-desc2">youridealescape.com</div>  <div class="hamburgers" onclick="toggleMenuTablet()"><div class="lines"></div><div class="lines"></div><div class="lines"></div></div><ul class="hamburger-container-tablet" id="hamburgerContainerTablet"><li class="hamburger-tablet">Beranda</li><li class="hamburger-tablet">Destinasi</li><li class="hamburger-tablet">Buat Trip</li></ul></div>
@@ -36,8 +57,8 @@ $user = Auth::user()->name;
         </div>
     </div>
 </div>    
-@endif
-@if(!auth()->user() || !auth()->user()->isAdmin)
+@else(auth()->user())
+<?php $user =  Auth::user()->name?>
 <div class="container-nav">
     <div class="wrapper-nav">
         <div class="left-nav"><div class="hamburger" onclick="toggleMenu()"><div class="line"></div><div class="line"></div><div class="line"></div></div><ul class="hamburger-container" id="hamburgerContainer"><li class="hamburger">Beranda</li><li class="hamburger">Tempat Wisata</li><li class="hamburger">Paket Wisata</li></ul><div class="slogan-desc2">youridealescape.com</div>  <div class="hamburgers" onclick="toggleMenuTablet()"><div class="lines"></div><div class="lines"></div><div class="lines"></div></div><ul class="hamburger-container-tablet" id="hamburgerContainerTablet"><li class="hamburger-tablet">Beranda</li><li class="hamburger-tablet">Destinasi</li><li class="hamburger-tablet">Buat Trip</li></ul></div>

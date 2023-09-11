@@ -72,6 +72,7 @@ Route::get('/paketwisata/filter', [PaketWisataController::class, 'getPaketWisata
 Route::get('/paketwisata/detail/{id}', [PaketWisataController::class, 'getById'])->name('detail');
 Route::get('/paketwisata/itenary/{id}', [PaketWisataController::class, 'getAllItenarys'])->name('itenary');
 Route::get('/paketwisata/itenary/details/{id}', [PaketWisataController::class, 'getItenarysById'])->name('indexofwisata');
+Route::get('/paketwisata/payment/{id}', [PaketWisataController::class, 'paymentF'])->name('letspay');
 //CRUD SIDE || UPDATE
 Route::get('/paketwisata/edit/{id}', [PaketWisataController::class, 'indexOfEditPaketWisata'])->name('edit-paket-wisata');
 Route::put('/paketwisata/edit/{id}/update', [PaketWisataController::class, 'update']);
@@ -94,6 +95,7 @@ Route::post('/payment/create', [PaymentController::class, 'createNewPayment'])->
 Route::get('/destinasi', [WisataController::class, 'index'])->name('destinasi');
 Route::post('/destinasi/filter', [WisataController::class, 'getwisatabyfilter'])->name('destinasi-filter');
 Route::get('/destinasi/{id}', [WisataController::class, 'getwisatabyid'])->name('wisata-detail');
+Route::get('/destinasi/payment/{id}', [WisataController::class, 'paymentW'])->name('paymentW');
 
 //DESTINASI CRUD SIDE
 

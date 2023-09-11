@@ -169,7 +169,6 @@ class PaketWisataController extends Controller
         $detailData = PaketWisata::with('wisata')->findOrFail($id);
         $jumlahorang = session('jumlahorang');
         $durasi = session('durasi');
-        $userEmail = Auth::user()->email;
 
         // Retrieve related wisata data where slot columns match the name
         $relatedWisata = Wisata::whereIn('name', [
@@ -389,6 +388,45 @@ public function deletePaketWisata($id) {
     $paketWisata->delete();
     return redirect('/trip')->with('success', 'Your action was successful!');
 }
+
+
+
+public function paymentF($id) {
+    $detailData = PaketWisata::with('wisata')->findOrFail($id);
+    $jumlahorang = session('jumlahorang');
+    $durasi = session('durasi');
+    $userEmail = Auth::user()->email;
+
+    // Retrieve related wisata data where slot columns match the name
+    $relatedWisata = Wisata::whereIn('name', [
+    $detailData->slot1,
+    $detailData->slot2,
+    $detailData->slot3,
+    $detailData->slot4,
+    $detailData->slot5,
+    $detailData->slot6,
+    $detailData->slot7,
+    $detailData->slot8,
+    $detailData->slot9,
+    $detailData->slot10,
+    $detailData->slot11,
+    $detailData->slot12,
+    $detailData->slot13,
+    $detailData->slot14,
+    $detailData->slot15,
+    $detailData->slot16,
+    $detailData->slot17,
+    $detailData->slot18,
+    $detailData->slot19,
+    $detailData->slot20,
+    // Add more slot columns here
+])->get();
+
+
+    return view('payment', ['detailData' => $detailData, 'jumlahorang' => $jumlahorang, 'durasi' => $durasi, 'relatedWisata' => $relatedWisata, 'userEmail' => $userEmail]);
+}
     
 
 }
+
+

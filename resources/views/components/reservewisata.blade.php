@@ -68,9 +68,6 @@ input:focus[type="text"] {
 <body>
 <div class="reserve">
     <div class="rContainer">
-        <div class="florm-sadal">
-            <i class="fa fa-close" id="sliderCloseFF" style="display: flex; position: absolute; right: 0; top: 0;"></i>
-        </div>
     <form action="{{ route('xendit') }}" method="POST">
         @csrf
     <div class="lsItem">
@@ -115,16 +112,6 @@ input:focus[type="text"] {
 </div>
 </body>
 </html>
-
-
-<script>
-    const form = document.querySelector('.reserve')
-    const closeSliderSubmit = document.getElementById('sliderCloseFF');
-
-    closeSliderSubmit.addEventListener("click", () => {
-        form.style.display = 'none';
-    })
-</script>
 
 
 <script>

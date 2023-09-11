@@ -50,7 +50,7 @@ class AuthController extends Controller
 
     public function destroy() {
         Auth::logout();
-        return redirect()->route('logouts');
+        return redirect()->route('home');
     }
 
 

@@ -1,15 +1,4 @@
-<?php
-use Illuminate\Support\Facades\Auth;
 
-$user = Auth::check();
-
-if (!$user) {
-    header("Location: /login");
-    exit;
-}else if ($user > 0){
-    header("Location: /login");
-}
-?>
 
 <?php
 $id = request('id');?>
@@ -27,7 +16,6 @@ $id = request('id');?>
     <title>Paket Wisata</title>
 </head>
 <body>
-  @auth
   @include('components.navbar')
     <div class="listbr">
       <div class="listContainer">
@@ -40,6 +28,5 @@ $id = request('id');?>
       </div>
   </div>
   @include('components.footer')
-@endauth
 </body>
 </html>

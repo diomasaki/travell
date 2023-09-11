@@ -1,15 +1,4 @@
-<?php
-use Illuminate\Support\Facades\Auth;
 
-$user = Auth::check();
-
-if (!$user) {
- header("Location: /login");
- exit;
-}else if ($user > 0){
-   header("Location: /login");
-}
-?>
 
 <?php
 function formatCurrency($value) {
@@ -31,7 +20,6 @@ function formatCurrency($value) {
 </head>
 <body>
 <div style="margin-top: 100px;">
-        @auth
         @include('components.navbar')
         <div class="detailwisata-container">
           <div id="sliders" class="slider-detail-wisata" style="display: none;">
@@ -76,47 +64,24 @@ function formatCurrency($value) {
               <h2>
               <b>Rp. {{ formatCurrency($results->price) }}</b>
               </h2>
-              <form id="hiddenForm" action="{{ route('xendit') }}" method="POST" style="display: none;">
-              @csrf
-              @if(Auth::check())
-              <?php $userEmail = Auth::user()->email; ?>
-              <input type="hidden" name="payer_email" value="{{ $userEmail }}">
-              <input type="hidden" name="description" value="Pembayaran Tiket {{ $results->name }}">
-              @if ($jumlahorang > 0)
-              <input type="hidden" name="amount" value="{{ $results->price * $jumlahorang }}">
+              @if (!auth()->user())
+              <a href="/login" style="text-decoration: none; color: white;">
+                <button class="ptks">Pesan Tiket Sekarang!</button>
+              </a>
               @else
-                <input type="hidden" name="amount" value="{{ $results->price }}">
+              <a href="{{route('paymentW' , ['id' => $results->id]) }}" style="text-decoration: none; color: white;">
+              <button type="submit" name="submit" class="adadada">Pesan Tiket Sekarang!</button>
+              </a>
               @endif
-              @endif
-              </form>
-              <button id="submitButton-Form" type="submit" name="submit">Pesan Tiket Sekarang!</button>
               </div>
           </div>
         </div>
       </div>
-      @include('components/reservewisata')
     </div>
     @include('components.footer')
-    @endauth
 </body>
 </html>
 
-<script>
-  const modal = document.querySelector(".reserve")
-  const submitForm = document.getElementById('submitButton-Form');
-  submitForm.addEventListener("click", () => {
-    modal.style.display = 'block';
-    modal.style.display = 'flex';
-  })
-</script>
-
-
-
-<script>
-    document.getElementById('submitButton').addEventListener('click', function() {
-        document.getElementById('hiddenForm').submit();
-    });
-</script>
 
 <script>
 

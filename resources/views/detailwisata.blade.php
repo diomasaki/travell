@@ -1,17 +1,4 @@
-<?php
-use Illuminate\Support\Facades\Auth;
 
-$user = Auth::check();
-$users = Auth::user();
-$userEmail = $users->email;
-
-if (!$user) {
- header("Location: /login");
- exit;
-}else if ($user > 0){
-   header("Location: /login");
-}
-?>
 
 <?php
 function formatCurrency($value) {
@@ -34,7 +21,6 @@ function formatCurrency($value) {
 </head>
 <body>
 <div style="margin-top: 100px;">
-        @auth
         @include('components.navbar')
       <div class="detailwisata-container">
           <div id="sliders" class="slider-detail-wisata" style="display: none;">
@@ -120,27 +106,23 @@ function formatCurrency($value) {
               <h2>
                   <b>Rp.{{ formatCurrency($detailData->budget) }}</b>
               </h2>
-                <button id="submitButton-Form">Pesan Tiket Sekarang!</button>
+              @if (!auth()->user())
+              <a href="/login" style="text-decoration: none; color: white;">
+                <button class="ptks">Pesan Tiket Sekarang!</button>
+              </a>
+              @else
+              <a href="{{route('letspay' , ['id' => $detailData->id]) }}" style="text-decoration: none; color: white;">
+              <button class="ptks">Pesan Tiket Sekarang!</button>
+              </a>
+              @endif
             </div>
           </div>
         </div>
       </div>
-      @include('components/reserve')
     </div>
     @include('components.footer')
-    @endauth
 </body>
 </html>
-
-
-<script>
-  const modal = document.querySelector(".reserve")
-  const submitForm = document.getElementById('submitButton-Form');
-  submitForm.addEventListener("click", () => {
-    modal.style.display = 'block';
-    modal.style.display = 'flex';
-  })
-</script>
 
 
 

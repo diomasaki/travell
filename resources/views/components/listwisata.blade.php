@@ -1,15 +1,4 @@
-<?php
-use Illuminate\Support\Facades\Auth;
 
-$user = Auth::check();
-
-if (!$user) {
- header("Location: /login");
- exit;
-}else if ($user > 0){
-   header("Location: /login");
-}
-?>
 
 <?php
 function formatCurrency($value) {

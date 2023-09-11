@@ -1,15 +1,4 @@
-<?php
-use Illuminate\Support\Facades\Auth;
 
-$user = Auth::check();
-
-if (!$user) {
- header("Location: /login");
- exit;
-}else if ($user > 0){
-   header("Location: /login");
-}
-?>
 
 <html lang="en">
 <head>
@@ -25,7 +14,6 @@ if (!$user) {
 </head>
 <body>
 <div style="margin-top: 100px;">
-        @auth
         @include('components.navbar')
       <div class="detailwisata-container">
           <div id="sliders" class="slider-detail-wisata" style="display: none;">
@@ -72,7 +60,6 @@ if (!$user) {
       </div>
     </div>
     @include('components.footer')
-    @endauth
 </body>
 </html>
 

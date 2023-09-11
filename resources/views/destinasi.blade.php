@@ -1,17 +1,3 @@
-<?php
-use Illuminate\Support\Facades\Auth;
-
-$user = Auth::check();
-
-if (!$user) {
-    header("Location: /login");
-    exit;
-}else if ($user > 0){
-    header("Location: /login");
-}
-?>
-
-
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -24,7 +10,6 @@ if (!$user) {
     <title>Destinasi</title>
 </head>
 <body>
-  @auth
   @include('components.navbar')
     <div class="listbr">
       <div class="listContainer">
@@ -61,6 +46,5 @@ if (!$user) {
     </div>
   </div>
   @include('components.footer')
-@endauth
 </body>
 </html>
